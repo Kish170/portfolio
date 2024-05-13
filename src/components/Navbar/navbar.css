@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    text-decoration: 0;
+    position: relative;
+}
+
+.menu {
+    display:flex;
+    position:absolute;
+    right: 0;
+    background-color: #F7CE3E;
+    margin: auto;
+    padding: 20px;
+}
+
+.nav-items {
+    background-color: #F7CE3E;
+    display: flex;
+    z-index: 1;
+}
+
+.nav-items > h1 {
+    margin: 1em;
+    background-color: #F7CE3E;
+}
+.pages {
+    color: black;
+    margin: 1em;
+    background-color: #F7CE3E;
+    font-size: larger;
+    border: 0cm;
+}
+.nav-items > .pages {
+    text-align: center;
+}
+
