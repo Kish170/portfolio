@@ -3,36 +3,37 @@
     padding: 0;
     box-sizing: 0;
     text-decoration: 0;
-    position: relative;
 }
 
 .menu {
     display:flex;
-    position:absolute;
+    position: fixed;
     right: 0;
-    background-color: #F7CE3E;
+    background-color: #E5FFDE;
     margin: auto;
     padding: 20px;
 }
 
-.nav-items {
-    background-color: #F7CE3E;
+.nav {
+    position: fixed;
+    width: 100%;
+    background-color: #E5FFDE;
     display: flex;
     z-index: 1;
 }
 
-.nav-items > h1 {
+.nav > h1 {
     margin: 1em;
-    background-color: #F7CE3E;
+    background-color: #E5FFDE;
 }
 .pages {
     color: black;
     margin: 1em;
-    background-color: #F7CE3E;
+    background-color: #E5FFDE;
     font-size: larger;
     border: 0cm;
 }
-.nav-items > .pages {
+.nav > .pages {
     text-align: center;
 }
 

@@ -1,6 +1,4 @@
 import profile from '../images/download.jpg'
-import './hero.css'
-
 
 export default function Edu({EduC}) {
     return (

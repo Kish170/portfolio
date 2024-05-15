@@ -1,5 +1,5 @@
 import React from "react";
-import './navbar.css';
+import style from './navbar.module.css';
 import { Link } from "react-router-dom";
 
 const Navbar = ({refs}) => {
@@ -9,15 +9,15 @@ const Navbar = ({refs}) => {
     }
 
     return (
-        <div className="nav-items">
+        <div className={style.nav}>
             <h1>KISHAN RAJAGUNATHAS</h1>
-            <div className="menu">
-                <Link className="pages" onClick={() => scrollTo("HeroC")}>HOME</Link>
-                <Link className="pages" onClick={() => scrollTo("AboutC")}>ABOUT ME</Link>
-                <Link className="pages" onClick={() => scrollTo("EduC")}>EDUCATION</Link>
-                <Link className="pages" onClick={() => scrollTo("ProjC")}>PROJECTS</Link>
-                <Link className="pages" onClick={() => scrollTo("ExpC")}>EXPERIENCE</Link>
-                <Link className="pages" onClick={() => scrollTo("SkillsC")}>SKILLS</Link>
+            <div className={style.menu}>
+                <Link className={style.pages} onClick={() => scrollTo("HeroC")}>HOME</Link>
+                <Link className={style.pages} onClick={() => scrollTo("AboutC")}>ABOUT ME</Link>
+                <Link className={style.pages} onClick={() => scrollTo("EduC")}>EDUCATION</Link>
+                <Link className={style.pages} onClick={() => scrollTo("ProjC")}>PROJECTS</Link>
+                <Link className={style.pages} onClick={() => scrollTo("ExpC")}>EXPERIENCE</Link>
+                <Link className={style.pages} onClick={() => scrollTo("SkillsC")}>SKILLS</Link>
             </div>
         </div>
     );

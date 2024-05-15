@@ -1,0 +1,48 @@
+*{
+    background-color: white;
+}
+#banner {
+    background-color: #E5FFDE;
+    padding: 2%;
+    display: flex;
+    height: 100vh;
+}
+
+#profile {
+    height: 100vh;
+}
+
+#banner > h1 {
+    font-size: 100px;
+}
+
+#text {
+    padding: 5%;
+}
+
+#abu, #links {
+    padding:8%;
+    display: inline-block;
+}
+
+#abu > p {
+    padding-top: 10%;
+}
+
+.links {
+    display: table;
+}
+
+.linkers {
+    display: table-cell;
+}
+.linknames {
+    padding-top: 12%;
+    display: table-cell;
+    width: 100px;
+}
+
+.linkers > p, .linknames >h3 {
+    height: 30px;
+}
+
