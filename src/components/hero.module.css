@@ -1,17 +1,22 @@
 
 #banner {
     background-color: white;
-    padding: 2%;
+    padding-top: 10%;
     display: flex;
     align-items: center;
-    height: 100vh;
+    height: 100%;
+    width: 100%;
 }
 
+#banner > img {
+    width: 100%;
+}
 
 #banner > h1 {
     background-color: white;
     font-size: 100px;
-    color: #cdfcc0 ;
+    padding: 10%;
+    color: #517664 ;
     -webkit-text-stroke-width: 5px;
     -webkit-text-stroke-color: black;
 }

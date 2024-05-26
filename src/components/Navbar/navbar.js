@@ -14,10 +14,9 @@ const Navbar = ({refs}) => {
             <div className={style.menu}>
                 <Link className={style.pages} onClick={() => scrollTo("HeroC")}>HOME</Link>
                 <Link className={style.pages} onClick={() => scrollTo("AboutC")}>ABOUT ME</Link>
-                <Link className={style.pages} onClick={() => scrollTo("EduC")}>EDUCATION</Link>
+                <Link className={style.pages} onClick={() => scrollTo("EduC")}>EDUCATION & SKILLS</Link>
                 <Link className={style.pages} onClick={() => scrollTo("ProjC")}>PROJECTS</Link>
                 <Link className={style.pages} onClick={() => scrollTo("ExpC")}>EXPERIENCE</Link>
-                <Link className={style.pages} onClick={() => scrollTo("SkillsC")}>SKILLS</Link>
             </div>
         </div>
     );

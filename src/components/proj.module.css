@@ -1,0 +1,147 @@
+*{
+    background-color: #E5FFDE;
+}
+
+#banner {
+    padding: 2%;
+    height: 50vh;
+}
+
+#banner > *, .projs, #aproj > * {
+    padding: 2%;
+}
+
+#aproj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#prev, #next {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    width: auto;
+    margin: -10%;
+    margin-top:-6%;
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    padding: 5%;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    margin-right: -5%;
+    margin-left: -5%;
+}
+  
+#dots {
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+}
+
+#next {
+    right: 0;
+    margin-left: -10%;
+}
+
+#prev {
+    left:0
+}
+  
+#prev:hover, #next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.image > img:hover {
+    opacity: 0.5; 
+}
+
+.projs:hover .info > *{
+    opacity: 0;
+}
+
+.projs:hover .hide{
+    opacity: 1;
+    color: white;
+}
+
+.projs:hover .overlay {
+    background-color: black;
+}
+
+
+.info {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1; 
+    transition: opacity 0.3s ease; 
+    background-color: transparent;
+    color: white;
+}
+
+.info > * {
+    background-color: transparent;
+}
+
+.hide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    background-color: transparent;
+}
+
+#all {
+    position: relative;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.image img{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.active, .dot:hover {
+    background-color: #717171;
+}
+
+.projs {
+    width: 700px;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+}
+

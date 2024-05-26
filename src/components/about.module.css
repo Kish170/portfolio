@@ -1,15 +1,23 @@
-*{
-    background-color: white;
-}
+
 #banner {
     background-color: #E5FFDE;
-    padding: 2%;
+    padding: 5%;
     display: flex;
-    height: 100vh;
+    height: 90%;
 }
 
 #profile {
-    height: 100vh;
+    width: 50%;
+}
+
+#border {
+    display: flex;   
+    height: 90%;
+    width: 100%;
+    padding: 5%;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
 }
 
 #banner > h1 {
@@ -17,11 +25,13 @@
 }
 
 #text {
+    height: 80vh;
     padding: 5%;
+    margin-right: 10%;
 }
 
 #abu, #links {
-    padding:8%;
+    padding: 6%;
     display: inline-block;
 }
 
@@ -42,7 +52,14 @@
     width: 100px;
 }
 
-.linkers > p, .linknames >h3 {
+.linknames > h3 {
+    color: #517664;
+}
+
+.linkers > p, .linknames > h3, tr, td {
     height: 30px;
 }
 
+#text, #text > *, #text > * > *, #text > * > * >* , td > a, tr > a{
+    background-color: white;
+}

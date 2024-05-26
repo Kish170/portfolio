@@ -1,0 +1,61 @@
+#box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    overflow: scroll;
+    padding-top: 10%;
+}
+
+#modal {
+    background: white;
+    border-radius: 5px;
+    width: 160vh;
+    position: relative;
+    margin-top: 50%;
+    padding: -10%;
+    margin-bottom: 5%;
+}
+
+#info {
+    color: black;
+}
+
+.imga {
+    width: 100vh;
+    height: auto;
+    margin: 10%;
+    margin-left: 13%;
+    justify-content: center;
+    box-shadow: 10px 10px 10px 10px;
+}
+
+.imga > img {
+    width: 100%;
+    height: auto;
+   
+}
+
+.partOne {
+    background-color: white;
+    text-align: center;
+    align-items: center;
+}
+
+.one {
+    padding:2%;
+}
+
+.partOne > *, .partOne > * > *{
+    background-color: white;
+}
+
+#modal > * {
+    margin: 5%;
+}

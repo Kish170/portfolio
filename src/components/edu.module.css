@@ -1,0 +1,56 @@
+#banner{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+#edu, #skills {
+    margin: 5%;
+    width: 30%;
+    background-color: #E5FFDE;
+    height: 500px;
+}
+
+#edu > * , #edu > * > *, #skills > *, #skills> * >*, li, .sskills > h2, ul{
+    background-color: #E5FFDE;
+    padding: 1%;
+}
+
+#edu > *, #skills > * {
+    padding-left: 10%;
+}
+
+#edu > h1, #skills > h1 {
+    padding-top: 10%;
+}
+
+#odd {
+    padding-bottom: 20%;
+}
+
+#lodd {
+    padding-bottom: 13%
+}
+
+#skills > h1 {
+    padding-top: 10%;
+}
+
+.part {
+    display: table;
+}
+
+.sskills {
+    display: table-cell;
+    width: 300px;
+}
+
+li {
+    margin-left: 10%;
+}
+
+.green {
+    color: #517664;
+}
+
+

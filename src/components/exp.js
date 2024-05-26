@@ -3,7 +3,7 @@ import profile from '../images/download.jpg'
 export default function Exp({ExpC}) {
     return (
     <>
-        <div ref={ExpC} id="banner">
+        {/* <div ref={ExpC} id="banner">
             <img src={profile} alt=""></img>
             <div id="text">
                 <h1>ABOUT ME</h1>
@@ -21,7 +21,7 @@ export default function Exp({ExpC}) {
                 <h1>PERSONAL LINKS</h1>
                 <p>Email: </p>
             </div>
-        </div>
+        </div> */}
     </>
     );
 }
