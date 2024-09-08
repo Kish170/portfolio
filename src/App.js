@@ -4,6 +4,7 @@ import Hero from "./components/hero"
 import Edu from "./components/edu.js";
 import Exp from "./components/exp.js";
 import Proj from "./components/proj.js";
+import Foot from "./components/footer.js";
 import { useRef } from "react"
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
       <Edu EduC={EduRef}/>
       <Proj ProjC={ProjRef}/>
       <Exp ExpC={ExpRef}/>
+      <Foot/>
     </>
   );
 }

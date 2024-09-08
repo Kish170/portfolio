@@ -1,22 +1,152 @@
 
 #banner {
     background-color: white;
-    padding-top: 10%;
+    padding-top:10%;
+    padding-bottom: 5%;
     display: flex;
     align-items: center;
-    height: 100%;
     width: 100%;
+    justify-content: center;
+
 }
 
 #banner > img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
-#banner > h1 {
+#banner > h1 {    
     background-color: white;
     font-size: 100px;
-    padding: 10%;
+    padding: 5%;
     color: #517664 ;
     -webkit-text-stroke-width: 5px;
     -webkit-text-stroke-color: black;
+    text-align: center;
+}
+
+h1 > * {
+    background-color: white;  
+    animation: bounce 1s infinite;
+    position: relative; 
+}
+
+@keyframes bounce {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -20px;
+    }
+}
+
+h1 span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+h1 span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+h1 span:nth-child(4) {
+    animation-delay: 0.3s;
+}
+h1 span:nth-child(5) {
+    animation-delay: 0.4s;
+}
+h1 span:nth-child(6) {
+    animation-delay: 0.5s;
+}
+h1 span:nth-child(7) {
+    animation-delay: 0.6s;
+}
+h1 span:nth-child(9) {
+    animation-delay: 0.7s;
+}
+h1 span:nth-child(10) {
+    animation-delay: 0.8s;
+}
+h1 span:nth-child(12) {
+    animation-delay: 0.9s;
+}
+h1 span:nth-child(13) {
+    animation-delay: 1.0s;
+}
+h1 span:nth-child(14) {
+    animation-delay: 1.1s;
+}
+h1 span:nth-child(15) {
+    animation-delay: 1.2s;
+}
+h1 span:nth-child(16) {
+    animation-delay: 1.3s;
+}
+h1 span:nth-child(17) {
+    animation-delay: 1.4s;
+}
+h1 span:nth-child(18) {
+    animation-delay: 1.5s;
+}
+h1 span:nth-child(19) {
+    animation-delay: 1.6s;
+}
+h1 span:nth-child(21) {
+    animation-delay: 1.7s;
+}
+h1 span:nth-child(22) {
+    animation-delay: 1.8s;
+}
+h1 span:nth-child(23) {
+    animation-delay: 1.9s;
+}
+h1 span:nth-child(24) {
+    animation-delay: 2.0s;
+}
+h1 span:nth-child(25) {
+    animation-delay: 2.1s;
+}
+h1 span:nth-child(26) {
+    animation-delay: 2.2s;
+}
+h1 span:nth-child(27) {
+    animation-delay: 2.3s;
+}
+h1 span:nth-child(28) {
+    animation-delay: 2.4s;
+}
+h1 span:nth-child(29) {
+    animation-delay: 2.5s;
+}
+
+
+@media (max-width: 1023px) {
+    #banner {
+        padding-top: 25%;
+    }
+    #banner > img {
+        display:none;
+    }
+
+    #banner > h1 {
+        font-size: 15vh;
+    }
+}
+
+@media (max-width: 819px) {
+    #banner > h1 {
+        font-size: 8vh;
+    }
+}
+
+@media (max-width: 768px) {
+    #banner > h1 {
+        font-size: 15vh;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+        #banner > h1 {
+            margin-top: 15% ;
+            font-size: 10vh;
+            -webkit-text-stroke-width: 3px;
+    }
 }

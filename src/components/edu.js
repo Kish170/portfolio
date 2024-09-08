@@ -4,7 +4,7 @@ export default function Edu({EduC}) {
     return (
     <>
         <div ref={EduC} id={style.banner}>
-            <div id={style.edu}>
+            <div class={style.block} id={style.edu}>
                 <h1>EDUCATION</h1>
                 <h2 class={style.green}>Bachelor of Science in Computer Science, Honours</h2>
                 <h3>Carleton University</h3>
@@ -19,8 +19,9 @@ export default function Edu({EduC}) {
                     <li id={style.odd}>Abstract Data Types and Algorithms</li>
                 </ul>
             </div>
-            <div id={style.skills}>
+            <div class={style.block} id={style.skills}>
                 <h1>SKILLS</h1>
+                <div id={style.table}>
                     <div class={style.part}>
                         <div class={style.sskills}>
                             <h2 class={style.green}>LANGUAGES:</h2>
@@ -64,7 +65,8 @@ export default function Edu({EduC}) {
                                     <li>Teamwork</li>
                                 </ul>
                         </div>
-                    </div>     
+                    </div>    
+                </div> 
             </div>
         </div>
     </>

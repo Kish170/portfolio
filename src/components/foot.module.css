@@ -1,0 +1,42 @@
+#banner {
+    width: 90%;
+    height: 10vh;
+    display: flex;
+    padding: 2%;
+    align-items: center;
+    right: 0;
+}
+
+#banner > * {
+    padding-right: 2%;
+}
+
+#banner > a {
+    padding-right: 0;
+}
+
+#banner > a > img {
+    text-align: right;
+    right: 0;
+    height: auto;
+    transition: width 0.4s ease;
+    width: 5vh;
+}
+
+#banner > a > img:hover {
+    width: 6vh;
+}
+
+@media (min-width:1024px) {
+    #banner > a > img {
+        text-align: right;
+        right: 0;
+        width: 5vh;
+        height: auto;
+        margin-top: 5%;
+        margin: 5%;
+        padding: 2%;
+        transition: width 0.4s ease;
+    }
+}
+

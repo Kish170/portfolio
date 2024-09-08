@@ -1,25 +1,39 @@
-#banner{
+
+#ban {
     background-color: white;
+    padding: 5%;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     height: fit-content;
+}
+
+.expb {
+    display: flex;
+}
+
+#ban > * {
+    background-color: white;
     padding: 5%;
 }
 
-.block {
-    margin: 2%;
-    width: 100vh;
-    background-color: #E5FFDE;
-    border-radius: 2%;
+.exps {
+    margin: 5%;
+    width: 50vh;
+    padding: 5%;
     transition: transform 0.3s;
 }
 
-.block:hover {
+.exps > * {
+    padding: 4%;
+}
+
+.exps:hover {
     transform: scale(0.9);
 }
 
-.block::before {
+.exps::before{
     content: '';
     position: absolute;
     top: -2px;
@@ -30,7 +44,7 @@
     border: 2px solid transparent;
 }
 
-.block:hover::before{
+.exps:hover::before{
     animation: anim 1s linear forwards;
 }
 
@@ -76,82 +90,36 @@
     
 }
 
-#edu > * , #edu > * > *, #skills > *, #skills> * >*, li, .sskills > h2, ul{
-    border-radius: 2%;;
-    background-color: #E5FFDE;
-    padding: 1%;
+
+#ban > h1 {
+    left:0;
 }
 
-#edu > *, #skills > * {
-    padding-left: 10%;
-}
 
-.block > h1 {
-    padding-top: 10%;
-}
-
-#odd {
-    padding-bottom: 20%;
-}
-
-#lodd {
-    padding-bottom: 13%
-}
-
-#skills > h1, #edu > h1 {
-    padding-top: 10%;
-}
-
-#edu > ul, .sskills > ul {
-    padding-left: 20%;
-}
-
-.green {
-    color: #517664;
-}
-
-#table {
-    display: table;
-}
-
-.part {
-    display: table-row;
-}
-
-.sskills {
-    display: table-cell;
-    width: 20%;
-    padding-bottom: 5%;
-}
 
 @media (max-width:1024px) {
-    #banner {
-        display: flex;
-        flex-direction: column;
+    #ban {
+        display: inline-block;
+        text-align: center;
+    }
+
+    #ban > h1 {
+        left:auto;
+    }
+}
+
+@media (max-width: 540px) {
+    .expb {
+        display: inline-block;
         justify-content: center;
         align-items: center;
-    }
-
-    .block {
-        display: inline-block;
+        margin-left: -8%;
     }
 
 }
 
-@media (max-width:1023px) {
-    .block {
-        width: 50vh;
-    }
-}
-
-@media (width:1024px) and (height:1366px) {
-    .block {
-        width: 60vh;
-    }
-}
-
-@media (max-width:539px) {
-    .block {
+@media (max-width: 430px) {
+    .exps {
         width: 40vh;
     }
 }

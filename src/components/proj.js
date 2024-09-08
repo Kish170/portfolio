@@ -1,12 +1,12 @@
 import style from './proj.module.css'
 import emp from '../images/download.jpg'
-import prof from '../images/white.jpg'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Modal from './modal'
 import movie from '../images/movie.png'
 import webpage from '../images/webpage.png'
 import crawl from '../images/crawl.png'
+import quiz from '../images/quiz.png'
 
 export default function Proj({ ProjC}) {
     let slideI = 1;
@@ -48,9 +48,10 @@ export default function Proj({ ProjC}) {
                     <h1>PROJECTS</h1>
                     <div id={style.all}>
                         <a id={style.prev} onClick={() => incSlide(-1)}>&#10094;</a>
-                        <div class={style.projs} onClick={() => {setIsOpen(true); setActive("proj_one")}}> 
+                        <div class={style.projs} onClick={() => {setIsOpen(true); setActive("proj_one")}} > 
                             <div class={style.image}>
-                                <img src={emp}></img>
+                                <img src={quiz}></img>
+                                <div class={style.overlay}></div>
                             </div>
                             <div class={style.info}>
                                 <h2>QUIZ GAME</h2>
@@ -95,13 +96,48 @@ export default function Proj({ ProjC}) {
                         <div id={style.dots}>
                             <span class={style.dot} onClick={() => currentSlide(4)}></span>
                             <span class={style.dot} onClick={() => currentSlide(3)}></span>
-                            <span class={style.dot}onClick={() => currentSlide(2)}></span>
+                            <span class={style.dot} onClick={() => currentSlide(2)}></span>
                             <span class={style.dot} onClick={() => currentSlide(1)}></span>
+                        </div>
+                        {isOpen && <Modal setIsOpen={setIsOpen} activeProj={active}/>}
+                    </div>
+                    <div id={style.all2}>
+                        <div class={style.projs2} onClick={() => {setIsOpen(true); setActive("proj_one")}} > 
+                            <div class={style.image2}>
+                                <img src={quiz}></img>
+                            </div>
+                            <div class={style.info2}>
+                                <h2>QUIZ GAME</h2>
+                            </div>
+                        </div>
+                        <div class={style.projs2} onClick={() => {setIsOpen(true); setActive("proj_two")}}> 
+                            <div class={style.image2}>
+                                <img src={movie}></img>
+                            </div>
+                            <div class={style.info2}>
+                                <h2>TERRY PICTURES(MOVIE STREAMING WEBSITE)</h2>
+                            </div>
+                        </div>
+                        <div class={style.projs2} onClick={() => {setIsOpen(true); setActive("proj_three")}}> 
+                            <div class={style.image2}>
+                                <img src={crawl}></img>
+                            </div>
+                            <div class={style.info2}>
+                                <h2>WEB CRAWLER + SEARCH ENGINE</h2>
+                            </div>
+                        </div>
+                        <div class={style.projs2} onClick={() => {setIsOpen(true); setActive("proj_four")}}> 
+                            <div class={style.image2}>
+                                <img src={webpage}></img>
+                            </div>
+                            <div class={style.info2}>
+                                <h2>WEBSITE PORTFOLIO</h2>
+                            </div>
                         </div>
                         {isOpen && <Modal setIsOpen={setIsOpen} activeProj={active}/>}
                     </div>
                 </div>
             </div>
-    </>
+        </>
     );
 }

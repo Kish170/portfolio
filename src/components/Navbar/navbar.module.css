@@ -1,17 +1,15 @@
-*{
+* {
     margin: 0;
     padding: 0;
-    box-sizing: 0;
-    text-decoration: 0;
+    box-sizing: border-box; 
+    text-decoration: none; 
 }
-
 .menu {
     display:flex;
     position: fixed;
     right: 0;
     background-color: #E5FFDE;
     margin: auto;
-    padding: 20px;
 }
 
 .nav {
@@ -20,20 +18,139 @@
     background-color: #E5FFDE;
     display: flex;
     z-index: 1;
+    align-items: center;
 }
 
 .nav > h1 {
     margin: 1em;
     background-color: #E5FFDE;
 }
+
 .pages {
     color: black;
     margin: 1em;
     background-color: #E5FFDE;
     font-size: larger;
-    border: 0cm;
 }
 .nav > .pages {
     text-align: center;
 }
 
+#snam, .sidebar {
+    display: none;
+}
+
+.pages:hover {
+    color: #517664;
+}
+
+@media (max-width: 920px) {
+
+    .nav {
+        align-items: baseline;
+    }
+    
+    #snam {
+        display: block;
+        background-color: #E5FFDE;
+        border: solid;
+        padding: 2px;
+    }
+
+    #name {
+        display: none;
+    }
+
+    .ham {
+        position: relative;
+        background-color: black;
+        width: 40%;
+        height: 6%;
+        margin: 5%;
+    }
+
+    #burg {
+        position: relative;
+        margin-top: 2%;
+        margin-right: -3%;
+        display: block;
+        width: 20%;
+        height: 10%;
+        background: none;
+        position: fixed;
+        right: 0;
+        padding: auto;
+        padding-top: 2%;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .sidebar {
+        height: 100vh;
+        width: 50%;
+        background-color: black;
+        position: absolute;
+        z-index: 10;
+        right: 0;
+    }
+
+    .sidebar > * {
+        display: block;
+        background-color: black;
+        color: white;
+    }
+
+    .pages {
+        margin: 10%;
+    }
+
+    #x {
+        position: absolute;
+        right: 0;
+        margin-right: 30px;
+    }
+
+    #x:after:hover {
+        color: #517664;
+    }
+    
+    #x:after {
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        content: "\d7";
+        font-size: 100px;
+        color: #fff;
+        line-height: 100px;
+        text-align: center;
+    }
+
+    #box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        background: rgba(0, 0, 0, 0);
+        overflow: hidden;
+        width: 100vh;
+        height: 100vh;
+        display: none;
+    }
+}
+
+@media (max-width:767px) {
+    #burg {
+        padding-top: 10%;
+    }
+}
+
+@media (width:540px) {
+    #burg {
+        padding-top: 6%;
+    }
+}
