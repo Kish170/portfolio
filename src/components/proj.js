@@ -81,7 +81,7 @@ export default function Proj({ ProjC}) {
                                 <h3 class={style.hide}>CLICK FOR MORE INFO</h3>
                             </div>
                         </div>
-                        <div class={style.projs} onClick={() => {setIsOpen(true); setActive("proj_four")}}> 
+                        {/* <div class={style.projs} onClick={() => {setIsOpen(true); setActive("proj_four")}}> 
                             <div class={style.image}>
                                 <img src={webpage}></img>
                                 <div class={style.overlay}></div>
@@ -91,10 +91,10 @@ export default function Proj({ ProjC}) {
                                 <p>My websitie portfoltio created using React.js as the framework </p>
                                 <h3 class={style.hide}>CLICK FOR MORE INFO</h3>
                             </div>
-                        </div>
+                        </div> */}
                         <a id={style.next} onClick={() => incSlide(1)}>&#10095;</a>
                         <div id={style.dots}>
-                            <span class={style.dot} onClick={() => currentSlide(4)}></span>
+                            {/* <span class={style.dot} onClick={() => currentSlide(4)}></span> */}
                             <span class={style.dot} onClick={() => currentSlide(3)}></span>
                             <span class={style.dot} onClick={() => currentSlide(2)}></span>
                             <span class={style.dot} onClick={() => currentSlide(1)}></span>
@@ -126,14 +126,14 @@ export default function Proj({ ProjC}) {
                                 <h2>WEB CRAWLER + SEARCH ENGINE</h2>
                             </div>
                         </div>
-                        <div class={style.projs2} onClick={() => {setIsOpen(true); setActive("proj_four")}}> 
+                        {/* <div class={style.projs2} onClick={() => {setIsOpen(true); setActive("proj_four")}}> 
                             <div class={style.image2}>
                                 <img src={webpage}></img>
                             </div>
                             <div class={style.info2}>
                                 <h2>WEBSITE PORTFOLIO</h2>
                             </div>
-                        </div>
+                        </div> */}
                         {isOpen && <Modal setIsOpen={setIsOpen} activeProj={active}/>}
                     </div>
                 </div>
