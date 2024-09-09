@@ -3,12 +3,17 @@
     padding: 0;
     box-sizing: 0;
     text-decoration: 0;
-    background: transparent;
+    background: transparent;    
+    background-color: white;
 }
 
 body {
-    background: rgb(30, 30, 30);
-    color: white;
+    color: #000;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: scroll;    
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
 }
