@@ -1,6 +1,5 @@
 
 #ban {
-    background-color: white;
     padding: 5%;
     display: flex;
     justify-content: center;
@@ -11,6 +10,8 @@
 
 .expb {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #ban > * {
@@ -19,8 +20,9 @@
 }
 
 .exps {
-    margin: 5%;
+    margin: 2%;
     width: 50vh;
+    box-sizing: border-box;
     padding: 5%;
     transition: transform 0.3s;
 }

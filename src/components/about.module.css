@@ -1,33 +1,20 @@
 
 #banner {
-    background-color: #E5FFDE;
     padding: 5%;
     display: flex;
-    height: 100%;
 }
 
 #profile {
     width: 50%;
-    border-radius: 2%;
+    border-radius: 10%;
 }
 
 #border {
     display: flex;   
-    height: 90%;
-    width: 100%;
     padding: 5%;
     align-items: center;
     justify-content: center;
-    background-color: white;
     border-radius: 2%;
-}
-
-#banner > h1 {
-    font-size: 100px;
-}
-
-#text {
-    padding: 5%;
 }
 
 #abu, #links {
@@ -37,41 +24,13 @@
 
 #abu > p {
     padding-top: 10%;
+    padding-left: 2%;
 }
 
-.links {
-    display: table;
+.images > *{
+    width: 10%;
+    padding-inline: 5%;
+    border-style: solid;
+    margin: 2%;
 }
 
-.linkers {
-    display: table-cell;
-}
-.linknames {
-    padding-top: 12%;
-    display: table-cell;
-    width: 100px;
-}
-
-.linknames > h3 {
-    color: #517664;
-}
-
-.linkers > p, .linknames > h3, tr, td {
-    height: 30px;
-}
-
-#text, #text > *, #text > * > *, #text > * > * >* , td > a, tr > a{
-    background-color: white;
-}
-
-@media (max-width: 600px) {
-    #border {
-        display: block;
-        align-items: center;
-    }
-
-    #profile {
-        width: 100%;
-    }
-
-}

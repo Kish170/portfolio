@@ -1,11 +1,14 @@
 import profile from "../images/profile.JPG";
+import git from "../images/git.png";
+import linkdin from "../images/linkdin.png";
+import gmail from "../images/gmaillogo(1).png";
 import style from "./about.module.css";
 
 export default function About({ AboutC }) {
   return (
     <>
       <div ref={AboutC} id={style.banner}>
-        <div id={style.border}>
+        <div id={style.border} className="background">
           <img id={style.profile} src={profile} alt=""></img>
           <div id={style.text}>
             <div id={style.abu}>
@@ -27,15 +30,20 @@ export default function About({ AboutC }) {
                 as I work towards becoming a Full Stack Developer.
               </p>
             </div>
-            <div id={style.links}>
+            <div className="background" id={style.links}>
               <h1>PERSONAL LINKS</h1>
-              <div className={style.linknames}>
+              <div className={style.images}>
+                <img src={git}></img> 
+                <img src={linkdin}></img> 
+                <img src={gmail}></img> 
+              </div>
+              {/* <div className={style.linknames}>
                 <h3>Email: </h3>
                 <h3>LinkedIn: </h3>
                 <h3>GitHub: </h3>
                 <h3>Resume: </h3>
-              </div>
-              <div className={style.linkers}>
+              </div> */}
+              {/* <div className={style.linkers}>
                 <tr>
                   <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=kishanrajagunathas@gmail.com">
                     kishanrajagunathas@gmail.com
@@ -54,7 +62,7 @@ export default function About({ AboutC }) {
                     Click for Resume
                   </a>
                 </tr>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

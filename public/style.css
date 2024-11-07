@@ -2,18 +2,36 @@
     margin: 0;
     padding: 0;
     box-sizing: 0;
-    text-decoration: 0;
-    background: transparent;    
-    background-color: white;
+    background-color: #262626;
+    color: aliceblue;  
+    scroll-behavior: smooth;
+}
+
+h1 {
+    color: white;
+    font-size: x-large;
+    margin: 2%;
+}
+
+p {
+    color: aliceblue;  
+    font-weight:500;
+    font-size: larger;
+    font-family: 'Lato', 'sans-serif';
 }
 
 body {
-    color: #000;
+    color: white;
     overflow: hidden;
     overflow-y: scroll;    
-    font-family: "Barlow Condensed", sans-serif;
-    font-weight: 100;
-    font-style: normal;
+    font-family: 'Poppins', 'sans-serif';
     display: flex;
     flex-direction: column;
+    text-decoration: none; 
+    justify-content: center;
+    align-items: center;
+}
+
+.background, .background > *, .background > * > *, .background > * > * > * {
+    background-color: #525252;
 }

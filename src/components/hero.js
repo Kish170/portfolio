@@ -7,37 +7,9 @@ export default function Hero({HeroC}) {
 return (
 <>
     <div ref={HeroC} id={style.banner}>
-        <h1>
-            <span>W</span>
-            <span>E</span>
-            <span>L</span>
-            <span>C</span>
-            <span>O</span>
-            <span>M</span>
-            <span>E</span>
-            <br></br>
-            <span>T</span>
-            <span>O</span>
-            <br></br>
-            <span>K</span>
-            <span>I</span>
-            <span>S</span>
-            <span>H</span>
-            <span>A</span>
-            <span>N</span>
-            <span>'</span>
-            <span>S</span>
-            <br></br>
-            <span>P</span>
-            <span>O</span>
-            <span>R</span>
-            <span>T</span>
-            <span>F</span>
-            <span>O</span>
-            <span>L</span>
-            <span>I</span>
-            <span>O</span>
-        </h1>
+        <h3>WELCOME TO MY PORTFOLIO WEBSITE</h3>
+        <h1 id={style.typer}>Hello World, I'm Kishan</h1>
+        <p>Computer Science @Carleton University</p>
     </div>
 </>
 );
