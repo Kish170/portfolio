@@ -17,7 +17,6 @@ p {
     color: aliceblue;  
     font-weight:500;
     font-size: larger;
-    font-family: 'Lato', 'sans-serif';
 }
 
 body {
@@ -34,4 +33,17 @@ body {
 
 .background, .background > *, .background > * > *, .background > * > * > * {
     background-color: #525252;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    font-family: 'Poppins', 'sans-serif';
+    margin: 2%;
+    padding: 5%;
+}
+
+hr {
+    border: solid 1px #CC2936;
+    width: 300px;
 }

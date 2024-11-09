@@ -30,8 +30,8 @@ const Navbar = ({refs}) => {
                 <h1 id={style.snam}>KR</h1>
                 <div className={style.menu}>
                     <Link id="home" className={style.pages} onClick={() => scrollTo("HeroC")}>Home</Link>
-                    <Link id="about" className={style.pages} onClick={() => scrollTo("AboutC")}>About Me</Link>
-                    <Link id="edu" className={style.pages} onClick={() => scrollTo("EduC")}>Education & Skills</Link>
+                    <Link id="about" className={style.pages} onClick={() => scrollTo("AboutC")}>About</Link>
+                    <Link id="edu" className={style.pages} onClick={() => scrollTo("EduC")}>Education</Link>
                     <Link id="projs" className={style.pages} onClick={() => scrollTo("ProjC")}>Projects</Link>
                     <Link id="exps" className={style.pages} onClick={() => scrollTo("ExpC")}>Experience</Link>
                 </div> 

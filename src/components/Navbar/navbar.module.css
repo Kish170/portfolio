@@ -7,11 +7,11 @@
 .nav {
     border-radius: 25px;
     position: fixed;
-    width: 93%;
+    width: 91%;
     display: flex;
     z-index: 1;
     align-items: center;
-    margin: 2%;
+    margin: 3%;
     padding: 1%;
     border: #E47780;
     border-style: solid;
@@ -49,7 +49,6 @@
 
 .menu {
     display:flex;
-    position: flex;
     right: 0;
     margin: auto;
     margin-right: 5%;

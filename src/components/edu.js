@@ -1,72 +1,117 @@
 import style from './edu.module.css'
+import js from '../images/jslogo.png'
+import java from '../images/javalogo.png'
+import python from '../images/python.png'
+import html from '../images/html.png'
+import css from '../images/css.png'
+import { useState, useEffect } from 'react';
 
 export default function Edu({EduC}) {
+    const [visbility, setVisibility] = useState("lang");
+
+    useEffect (() => {
+        if (visbility === "lang") {
+            document.getElementsByClassName(style.lang)[0].style.display = "grid";
+            document.getElementsByClassName(style.tools)[0].style.display = "none";
+            document.getElementsByClassName(style.tech)[0].style.display = "none";
+        } else if (visbility === "tools") {
+            document.getElementsByClassName(style.lang)[0].style.display = "none";
+            document.getElementsByClassName(style.tools)[0].style.display = "grid";
+            document.getElementsByClassName(style.tech)[0].style.display = "none";
+        }else if (visbility === "tech") {
+            document.getElementsByClassName(style.lang)[0].style.display = "none";
+            document.getElementsByClassName(style.tools)[0].style.display = "none";
+            document.getElementsByClassName(style.tech)[0].style.display = "grid";
+        }
+    },[visbility]);
+
     return (
     <>
         <div ref={EduC} id={style.banner}>
-            <div class={style.block} id={style.edu}>
-                <h1>EDUCATION</h1>
-                <h2 class={style.green}>Bachelor of Science in Computer Science, Honours</h2>
-                <h3>Carleton University</h3>
-                <p>Ottawa, ON</p>
-                <h2 class={style.green}>Course Work</h2>
-                <h3>First Year Courses</h3>
-                <ul>
-                    <li>Introduction to Statistics Modelling</li>
-                    <li>Linear Algebra</li>
-                    <li>Introduction to Computer Science</li>
-                    <li>Discrete Structures</li>
-                    <li id={style.odd}>Abstract Data Types and Algorithms</li>
-                </ul>
+            <div id={style.selection}>
+                <h1>SKILLS</h1> 
+                <hr></hr>
+                <button onClick={() => setVisibility("lang")}>Languages</button>
+                <button onClick={() => setVisibility("tools")}>Developer Tools</button>
+                <button onClick={() => setVisibility("tech")}>Technologies</button>
             </div>
-            <div class={style.block} id={style.skills}>
-                <h1>SKILLS</h1>
-                <div id={style.table}>
-                    <div class={style.part}>
-                        <div class={style.sskills}>
-                            <h2 class={style.green}>LANGUAGES:</h2>
-                                <ul>
-                                    <li>Java</li>
-                                    <li>Python</li>
-                                    <li>Javascript</li>
-                                    <li>CSS</li>
-                                    <li>HTML</li>
-                                </ul>
-                        </div>
-                        <div class={style.sskills}>
-                            <h2 class={style.green}>DEVELOPER TOOLS:</h2>
-                                <ul>
-                                    <li>Visual Studio Code</li>
-                                    <li>IntelliJ</li>
-                                    <li>GitHub/Git</li>
-                                    <li>Processing</li>
-                                </ul>
-                        </div>
-                    </div>
-                    <div class={style.part}>
-                        <div class={style.sskills}>
-                            <h2 class={style.green}>TECHNOLOGIES:</h2>
-                                <ul>
-                                    <li>JavaFX</li>
-                                    <li>Vue.js</li>
-                                    <li>JSON</li>
-                                    <li>Axios</li>
-                                    <li>Pinia</li>
-                                    <li>Firebase</li>
-                                    <li id={style.lodd}>Node.js</li>
-                                </ul>
-                            </div>
-                        <div class={style.sskills}>
-                            <h2 class={style.green}>SOFT SKILLS:</h2>
-                                <ul>
-                                    <li>Sales</li>
-                                    <li>Design</li>
-                                    <li>IT communication</li>
-                                    <li>Teamwork</li>
-                                </ul>
-                        </div>
-                    </div>    
-                </div> 
+            <div className={style.lang} >
+                <div>
+                    <img src={js}></img>
+                    <p>JavaScript</p>
+                </div>
+                <div>
+                    <img src={java}></img>
+                    <p>Java</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>Python</p>
+                </div>
+                <div>
+                    <img src={html}></img>
+                    <p>HTML</p>
+                </div>
+                <div>
+                    <img src={css}></img>
+                    <p>CSS</p>
+                </div>
+            </div>
+            <div className={style.tools} >
+                <div>
+                    <img src={js}></img>
+                    <p> VS code</p>
+                </div>
+                <div>
+                    <img src={java}></img>
+                    <p>IntelliJ</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>GitHub/Git</p>
+                </div>
+                <div>
+                    <img src={html}></img>
+                    <p>Processing</p>
+                </div>
+            </div>
+            <div className={style.tech} >
+                <div>
+                    <img src={js}></img>
+                    <p>JavaFX</p>
+                </div>
+                <div>
+                    <img src={java}></img>
+                    <p>Vue.js</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>React.js</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>JSON</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>Axios</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>Pinia</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>Node.js</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>Deno.js</p>
+                </div>
+                <div>
+                    <img src={python}></img>
+                    <p>Firebase</p>
+                </div>
             </div>
         </div>
     </>

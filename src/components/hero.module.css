@@ -19,7 +19,7 @@
 }
 
 #typer {
-    animation: typing 7s infinite, blink-caret .75s step-end infinite;
+    animation: typing 3s steps(20, end), blink-caret .75s step-end infinite;
     overflow: hidden;
     font-size:xxx-large;
     background: linear-gradient(to right, #CC2936, white);
