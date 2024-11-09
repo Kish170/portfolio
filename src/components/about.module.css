@@ -26,6 +26,32 @@
     border-width: 0.5px;
 }
 
+.slideout {
+    animation: slide 0.7s forwards;
+    animation-delay: 0.3;
+}
+
+.slidein {
+    animation: slidein 0.7s forwards;
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(0%);
+    } to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(100%);
+    } to {
+        transform: translateX(0%);
+    }
+}
+
 #abu, #links {
     padding: 6%;
     display: flex;

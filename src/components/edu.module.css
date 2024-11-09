@@ -14,7 +14,7 @@ img {
     width: 2em;
 }
 
-.tools, .lang, .tech {
+/* .tools, .lang, .tech {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 5%;
@@ -23,7 +23,7 @@ img {
     margin-left: 10%;
     height: 5em;
     gap: 20% 20%;
-}
+} */
 
 .tools > *, .lang > *, .tech  > * {
     display: flex;

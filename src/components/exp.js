@@ -4,7 +4,7 @@ import sti from './exp.module.css'
 export default function Exp({ExpC}) {
     return (
     <>
-        <div ref={ExpC}id={sti.ban}>
+        {/* <div ref={ExpC}id={sti.ban}>
             <h1>EXPERIENCE</h1>
             <div class={sti.expb}>
                 <div class={sti.exps}>
@@ -35,7 +35,7 @@ export default function Exp({ExpC}) {
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> */}
     </>
     );
 }

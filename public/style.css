@@ -47,3 +47,15 @@ hr {
     border: solid 1px #CC2936;
     width: 300px;
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 5%;
+    margin: 5%;
+    margin-top: 0%;
+    margin-left: 10%;
+    height: 5em;
+    gap: 20% 20%;
+    /* padding-bottom: 50%; */
+}

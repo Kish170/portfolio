@@ -4,6 +4,19 @@ import java from '../images/javalogo.png'
 import python from '../images/python.png'
 import html from '../images/html.png'
 import css from '../images/css.png'
+import processing from '../images/processing.svg'
+import vs from '../images/vscode.png'
+import intelli from '../images/intellij.png'
+import git from '../images/github.png'
+import vue from '../images/vue.png'
+import react from '../images/React.webp'
+import json from '../images/json.jpg'
+import pinia from '../images/pinia.png'
+import node from '../images/node.png'
+import deno from '../images/deno.svg'
+import axios from '../images/axios.webp'
+import firebase from '../images/firebase.png'
+
 import { useState, useEffect } from 'react';
 
 export default function Edu({EduC}) {
@@ -35,7 +48,7 @@ export default function Edu({EduC}) {
                 <button onClick={() => setVisibility("tools")}>Developer Tools</button>
                 <button onClick={() => setVisibility("tech")}>Technologies</button>
             </div>
-            <div className={style.lang} >
+            <div className={`${style.lang} grid`} >
                 <div>
                     <img src={js}></img>
                     <p>JavaScript</p>
@@ -57,59 +70,59 @@ export default function Edu({EduC}) {
                     <p>CSS</p>
                 </div>
             </div>
-            <div className={style.tools} >
+            <div className={`${style.tools} grid`} >
                 <div>
-                    <img src={js}></img>
+                    <img src={vs}></img>
                     <p> VS code</p>
                 </div>
                 <div>
-                    <img src={java}></img>
+                    <img src={intelli}></img>
                     <p>IntelliJ</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={git}></img>
                     <p>GitHub/Git</p>
                 </div>
                 <div>
-                    <img src={html}></img>
+                    <img src={processing}></img>
                     <p>Processing</p>
                 </div>
             </div>
-            <div className={style.tech} >
+            <div className={`${style.tech} grid`} >
                 <div>
-                    <img src={js}></img>
+                    <img src={java}></img>
                     <p>JavaFX</p>
                 </div>
                 <div>
-                    <img src={java}></img>
+                    <img src={vue}></img>
                     <p>Vue.js</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={react}></img>
                     <p>React.js</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={json}></img>
                     <p>JSON</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={axios}></img>
                     <p>Axios</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={pinia}></img>
                     <p>Pinia</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={node}></img>
                     <p>Node.js</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={deno}></img>
                     <p>Deno.js</p>
                 </div>
                 <div>
-                    <img src={python}></img>
+                    <img src={firebase}></img>
                     <p>Firebase</p>
                 </div>
             </div>
