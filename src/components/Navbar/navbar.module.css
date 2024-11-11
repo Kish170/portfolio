@@ -24,7 +24,7 @@
 }
 
 #name {
-    color:#CC2936;
+    color:#DA4450;
 }
 
 @keyframes open {
@@ -62,9 +62,5 @@
 
 #snam {
     display: none;
-}
-
-.pages:hover {
-    color: #E47780;
 }
 

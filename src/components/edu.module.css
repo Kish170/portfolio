@@ -1,7 +1,9 @@
 #banner{
     display: flex;
-    padding: 5%;
-    margin-inline: 15%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-left: -5%;
+    width: 90%;
 }
 
 #selection {
@@ -14,7 +16,11 @@ img {
     width: 2em;
 }
 
-/* .tools, .lang, .tech {
+#pinia {
+    width: 1.4em;
+}
+
+.grid {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 5%;
@@ -23,18 +29,29 @@ img {
     margin-left: 10%;
     height: 5em;
     gap: 20% 20%;
-} */
+}
 
-.tools > *, .lang > *, .tech  > * {
+.grid > * {
     display: flex;
     justify-content: flex-start;
     border: solid 1px white;
     border-radius: 3%;
     padding-inline: 20%;
     width: 150px;
+    transition: transform 0.3s ease;
 }
 
-.tools > * > *, .lang > * > *, .tech  > * > * {
+.grid > *:hover > *{
+    background-color: rgb(255, 223, 0, 0);
+    transform: scale(1.1);
+}
+.grid > *:hover{
+    background-color: rgb(255, 223, 0, 0.5);
+    transform: scale(1.1);
+}
+
+
+.grid > * > * {
     margin: 8%;
     margin-left:0;
 }

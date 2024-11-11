@@ -5,7 +5,7 @@ import git from '../images/git.png'
 export default function Foot() {
     return (
     <>
-        {/* <div id={stu.banner}>
+        <div className='background' id={stu.banner}>
             <h2>KISHANRAJAGUNATHAS</h2>
             <a href="https://www.linkedin.com/in/kishan-rajagunathas-54a2a7245/">
                 <img src={link}/>
@@ -13,7 +13,7 @@ export default function Foot() {
             <a href="https://github.com/Kish170">
                 <img src={git}/>
             </a>
-        </div> */}
+        </div>
     </>
     );
 }

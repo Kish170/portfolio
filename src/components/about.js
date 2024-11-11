@@ -6,18 +6,19 @@ export default function About({ AboutC }) {
   const sectionRef = useRef(null)
   const options = {
     root: null,
-    threshold: 0.4,
+    threshold: 0.2,
     rootMargin: "0px"
   }
 
   const callbackFunction = (entries) => {
     const[entry] = entries
     if (entry.isIntersecting) {
-      document.getElementById(style.border).classList.remove(style.slideout)
+      // document.getElementById(style.border).classList.remove(style.slideout)
       document.getElementById(style.border).classList.add(style.slidein)
+      
     } else {
-      document.getElementById(style.border).classList.add(style.slideout)
-      document.getElementById(style.border).classList.remove(style.slidein)
+      // document.getElementById(style.border).classList.add(style.slideout)
+      // document.getElementById(style.border).classList.remove(style.slidein)
     }
   }
   useEffect (() => {
@@ -34,7 +35,7 @@ export default function About({ AboutC }) {
     <>
       <div ref={sectionRef}>
         <div ref={AboutC} id={style.border} class="background">
-          <div id={style.decor}>
+          <div className={`decor`}>
             <hr></hr>
             <h1>ABOUT ME</h1>
             <hr></hr>

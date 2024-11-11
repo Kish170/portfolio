@@ -4,10 +4,14 @@ import sti from './exp.module.css'
 export default function Exp({ExpC}) {
     return (
     <>
-        {/* <div ref={ExpC}id={sti.ban}>
-            <h1>EXPERIENCE</h1>
+        <div ref={ExpC}id={sti.ban}>
+            <div className={`decor`}>
+                <hr></hr>
+                <h1>EXPERIENCE</h1>
+                <hr></hr>
+            </div>
             <div class={sti.expb}>
-                <div class={sti.exps}>
+                <div className={`background ${sti.exps}`}>
                     <h2>VICE PRESIDENT OF TECHNOLOGY OF BOOKERIES</h2>
                     <h3>TIMELINE: 11/2023 - 04/2024</h3>
                     <ul>
@@ -16,7 +20,7 @@ export default function Exp({ExpC}) {
                         <li>Managed virtual communication and technology problems that arose in other departments.</li>
                     </ul>
                 </div>
-                <div class={sti.exps}>
+                <div  className={`background ${sti.exps}`}>
                     <h2>YOUR VOICE IS POWER HACKATHON</h2>
                     <h3>TIMELINE: 11/2022</h3>
                     <ul>
@@ -25,7 +29,7 @@ export default function Exp({ExpC}) {
                         <li>Worked with EarSketch’s environment using Python to access the multiple rhythms and beats provided to construct a soundtrack of approximately 2 minutes</li>
                     </ul>
                 </div>
-                <div class={sti.exps}>
+                <div  className={`background ${sti.exps}`}>
                     <h2>INNOVATENOW HACKATHON</h2>
                     <h3>TIMELINE: 10/2024</h3>
                     <ul>
@@ -35,7 +39,7 @@ export default function Exp({ExpC}) {
                     </ul>
                 </div>
             </div>
-        </div> */}
+        </div>
     </>
     );
 }

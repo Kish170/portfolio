@@ -2,9 +2,9 @@
 #ban {
     padding: 5%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     height: fit-content;
 }
 
@@ -14,10 +14,6 @@
     justify-content: center;
 }
 
-#ban > * {
-    background-color: white;
-    padding: 5%;
-}
 
 .exps {
     margin: 2%;
@@ -31,11 +27,11 @@
     padding: 4%;
 }
 
-.exps:hover {
+/* .exps:hover {
     transform: scale(0.9);
-}
+} */
 
-.exps::before{
+/* .exps::before{
     content: '';
     position: absolute;
     top: -2px;
@@ -48,9 +44,9 @@
 
 .exps:hover::before{
     animation: anim 1s linear forwards;
-}
+} */
 
-@keyframes anim {
+/* @keyframes anim {
     0% {
         width: 0;
         height: 0;
@@ -90,13 +86,10 @@
         border-left-color: black;
     }
     
-}
+} */
 
 
-#ban > h1 {
-    left:0;
-}
-
+/* 
 
 
 @media (max-width:1024px) {
@@ -124,4 +117,4 @@
     .exps {
         width: 40vh;
     }
-}
+} */

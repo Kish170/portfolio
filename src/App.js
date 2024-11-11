@@ -28,8 +28,8 @@ function App() {
       <Hero HeroC={HeroRef}/>
       <About AboutC={AboutRef}/>
       <Edu EduC={EduRef}/>
-      <Proj ProjC={ProjRef}/>
       <Exp ExpC={ExpRef}/>
+      <Proj ProjC={ProjRef}/>
       <Foot/>
     </>
   );

@@ -15,7 +15,7 @@ h1 {
 
 p {
     color: aliceblue;  
-    font-weight:500;
+    font-weight:300;
     font-size: larger;
 }
 
@@ -29,6 +29,11 @@ body {
     text-decoration: none; 
     justify-content: center;
     align-items: center;
+}
+
+.decor {
+    display: flex;
+    flex-direction: row;
 }
 
 .background, .background > *, .background > * > *, .background > * > * > * {
@@ -48,14 +53,11 @@ hr {
     width: 300px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 5%;
-    margin: 5%;
-    margin-top: 0%;
-    margin-left: 10%;
-    height: 5em;
-    gap: 20% 20%;
-    /* padding-bottom: 50%; */
+.pages {
+    margin-right: 1em;
 }
+
+.pages:hover {
+    color: #FFDF00;
+}
+

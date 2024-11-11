@@ -1,21 +1,36 @@
 #banner { 
     display: flex;
     flex-direction: column;
-}
-.projs {
-    padding-bottom: 50%;
+    justify-content: center; 
+    align-items: center;    
+    padding: 5%;
 }
 
-.projs > * > img{
-    width: 10em;
+.projs {
+    display: grid;
+    grid-template-columns: auto;
+    margin: 5%;
+    gap: 2% 6%;
+    width: 100em;
+}
+
+.projs > * > img{    
+    width: 25em;
+    height: 250px;
+    border-radius: 10%;
 }
 
 .projs > * {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
     background-color: #525252;
-    padding: 5%;
-    width: 30em;
+    padding: 7%;
+    border-radius: 3%;
 }
 
 .projs > * >*{
+    padding: 3%;
+    margin-inline: 3%;
     background-color: #525252;
 }

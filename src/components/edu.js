@@ -40,16 +40,16 @@ export default function Edu({EduC}) {
 
     return (
     <>
-        <div ref={EduC} id={style.banner}>
+        <div ref={EduC} className="background" id={style.banner}>
             <div id={style.selection}>
                 <h1>SKILLS</h1> 
                 <hr></hr>
-                <button onClick={() => setVisibility("lang")}>Languages</button>
-                <button onClick={() => setVisibility("tools")}>Developer Tools</button>
-                <button onClick={() => setVisibility("tech")}>Technologies</button>
+                <button className="pages" onClick={() => setVisibility("lang")}>Languages</button>
+                <button className="pages" onClick={() => setVisibility("tools")}>Developer Tools</button>
+                <button className="pages" onClick={() => setVisibility("tech")}>Technologies</button>
             </div>
-            <div className={`${style.lang} grid`} >
-                <div>
+            <div className={`${style.lang} ${style.grid}`} >
+                <div>    
                     <img src={js}></img>
                     <p>JavaScript</p>
                 </div>
@@ -70,7 +70,7 @@ export default function Edu({EduC}) {
                     <p>CSS</p>
                 </div>
             </div>
-            <div className={`${style.tools} grid`} >
+            <div className={`${style.tools} ${style.grid}`} >
                 <div>
                     <img src={vs}></img>
                     <p> VS code</p>
@@ -88,7 +88,8 @@ export default function Edu({EduC}) {
                     <p>Processing</p>
                 </div>
             </div>
-            <div className={`${style.tech} grid`} >
+            <div className={`${style.tech} ${style.grid}`} >
+
                 <div>
                     <img src={java}></img>
                     <p>JavaFX</p>
@@ -110,7 +111,7 @@ export default function Edu({EduC}) {
                     <p>Axios</p>
                 </div>
                 <div>
-                    <img src={pinia}></img>
+                    <img id={style.pinia} src={pinia}></img>
                     <p>Pinia</p>
                 </div>
                 <div>
