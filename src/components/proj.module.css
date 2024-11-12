@@ -15,22 +15,24 @@
 }
 
 .projs > * > img{    
-    width: 25em;
+    width: 350px;
     height: 250px;
-    border-radius: 10%;
 }
 
 .projs > * {
     text-align: left;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: #525252;
-    padding: 7%;
-    border-radius: 3%;
+    /* padding: 7%; */
 }
 
-.projs > * >*{
+.projs > * > *{
     padding: 3%;
     margin-inline: 3%;
     background-color: #525252;
+}
+
+.projs > * > * > p {
+    padding-top: 3%;
 }

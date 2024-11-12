@@ -27,13 +27,13 @@ const Navbar = ({refs}) => {
         <>
             <div className={style.nav}>
                 <h1 id={style.name}>Kishan Rajagunathas</h1>
-                <h1 id={style.snam}>KR</h1>
                 <div className={style.menu}>
                     <Link id="home" className="pages" onClick={() => scrollTo("HeroC")}>Home</Link>
                     <Link id="about" className="pages" onClick={() => scrollTo("AboutC")}>About</Link>
                     <Link id="edu" className="pages" onClick={() => scrollTo("EduC")}>Education</Link>
                     <Link id="projs" className="pages" onClick={() => scrollTo("ProjC")}>Projects</Link>
                     <Link id="exps" className="pages" onClick={() => scrollTo("ExpC")}>Experience</Link>
+                    {/* <button type="toggle" id={style.ice}></button> */}
                 </div> 
                 <div id={style.box}></div>
             </div>

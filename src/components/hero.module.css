@@ -1,6 +1,6 @@
 
 #banner {
-    padding: 8%;
+    /* padding: 8%; */
     padding-top: 30%;
     padding-bottom: 20%;
     margin: auto;
@@ -42,10 +42,30 @@
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #CC2936  }
+    0%{
+        border-color: transparent
+    } 50% { 
+        border-color: #CC2936  
+    } 100% {
+        border-color: transparent
+    }
 }
 
+@media (max-width: 767px) {
+    #banner {
+        padding-top: 10%;
+        padding-bottom: 5%;
+    }
+    #banner > h3 {
+        font-size: medium;
+    }
+    #typer {
+        font-size: x-large;
+    }
+    #banner > p {
+        font-size: medium;
+    }
+}
 
 
 

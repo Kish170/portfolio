@@ -7,10 +7,13 @@
 .nav {
     border-radius: 25px;
     position: fixed;
+    left:0;
+    right:0;
     width: 91%;
     display: flex;
     z-index: 1;
     align-items: center;
+    justify-content: center;
     margin: 3%;
     padding: 1%;
     border: #E47780;
@@ -49,18 +52,35 @@
 
 .menu {
     display:flex;
-    right: 0;
     margin: auto;
     margin-right: 5%;
-}
-
-.pages {
-    margin: 1em;
-    font-size: medium;
-    font-family: 'Poppins', 'sans-serif';
 }
 
 #snam {
     display: none;
 }
 
+@media (max-width: 767px) {
+    #name {
+        display: none;
+    }
+
+    .nav {
+        width: 98.9%;
+        margin: 0;
+        padding: 0;
+        bottom:0;
+        animation: none;
+        font-size: smaller;
+    }
+
+    .menu {
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+    .nav.close {
+        animation: none;
+    }
+}
