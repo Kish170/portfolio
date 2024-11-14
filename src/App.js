@@ -5,7 +5,8 @@ import Edu from "./components/edu.js";
 import Exp from "./components/exp.js";
 import Proj from "./components/proj.js";
 import Foot from "./components/footer.js";
-import { useRef } from "react"
+import Switch from "react-switch";
+import { useRef } from "react";
 
 function App() {
   const AboutRef = useRef(null)

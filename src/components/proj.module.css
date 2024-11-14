@@ -23,14 +23,12 @@
     text-align: left;
     display: flex;
     flex-direction: row;
-    background-color: #525252;
-    /* padding: 7%; */
+    /* margin: 20%; */
 }
 
 .projs > * > *{
     padding: 3%;
     margin-inline: 3%;
-    background-color: #525252;
 }
 
 .projs > * > * > p {

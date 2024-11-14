@@ -16,9 +16,9 @@ export default function Proj({ ProjC}) {
                 <h1>PROJECTS</h1>
                 <hr></hr>
                 <div className={`${style.projs} grid`}>
-                    <div>
+                    <div className='background'>
                         <img src={quiz}></img>
-                        <div className='background'>
+                        <div>
                             <h2>Quiz Game</h2>
                             <h3>04/2021</h3>
                             <p>I created a quiz game focused on Computer Science topics 
@@ -31,9 +31,9 @@ export default function Proj({ ProjC}) {
                             </p>
                         </div>
                     </div>
-                    <div>
+                    <div className='background'>
                         <img src={movie}></img>
-                        <div className='background'>
+                        <div>
                             <h2>MOVIE STREAMING WEBSITE</h2>
                             <h3>02/2023</h3>
                             <p>I created a movie streaming website that allows users to browse through 
@@ -44,9 +44,9 @@ export default function Proj({ ProjC}) {
                             </p>
                         </div>
                     </div>
-                    <div>
+                    <div className='background'>
                         <img src={crawl}></img>
-                        <div className='background'>
+                        <div >
                             <h2>Web Crawler</h2>
                             <h3>12/2023</h3>
                             <p>This project implements a web crawler and search engine in Java 

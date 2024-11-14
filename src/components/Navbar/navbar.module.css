@@ -19,11 +19,11 @@
     border: #E47780;
     border-style: solid;
     background-color: rgba(38, 38, 38, 0.8);
-    animation: open 0.4s forwards;
+    animation: open 0.8s forwards;
 }
 
 .nav.close {
-    animation: close 0.4s forwards;
+    animation: close 0.8s forwards;
 }
 
 #name {
@@ -58,6 +58,14 @@
 
 #snam {
     display: none;
+}
+
+#ice {
+    color: white;
+    width: 10px;
+    background-color: #DA4450;
+    border: solid;
+    border-radius: 100%;
 }
 
 @media (max-width: 767px) {
