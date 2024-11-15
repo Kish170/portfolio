@@ -20,7 +20,6 @@
 #typer {
     animation: typing 3s steps(20, end), blink-caret .75s step-end infinite;
     overflow: hidden;
-    font-size:xxx-large;
     background: linear-gradient(to right, #CC2936, white);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -52,10 +51,10 @@
 
 @media (max-width: 767px) {
     #banner {
-        padding-top: 10%;
-        padding-bottom: 5%;
+        padding-top: 20%;
+        padding-bottom: 20%;
     }
-    #banner > h3 {
+    /* #banner > h3 {
         font-size: medium;
     }
     #typer {
@@ -63,7 +62,7 @@
     }
     #banner > p {
         font-size: medium;
-    }
+    } */
 }
 
 

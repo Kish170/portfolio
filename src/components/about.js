@@ -34,8 +34,8 @@ export default function About({ AboutC }) {
   return (
     <>
       <div ref={sectionRef}>
-        <div ref={AboutC} id={style.border} class="background">
-          <div className={`decor`}>
+        <div ref={AboutC} id={style.border} class={`background banner_col`}>
+          <div className={`decor`} id={style.decor}>
             <hr></hr>
             <h1>ABOUT ME</h1>
             <hr></hr>

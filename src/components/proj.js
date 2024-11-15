@@ -1,8 +1,4 @@
 import style from './proj.module.css'
-// import emp from '../images/download.jpg'
-// import { useEffect } from 'react';
-// import { useState } from 'react';
-// import Modal from './modal'
 import movie from '../images/movie.png'
 import webpage from '../images/webpage.png'
 import crawl from '../images/crawl.png'
@@ -12,12 +8,12 @@ export default function Proj({ ProjC}) {
 
     return (
         <>
-            <div ref={ProjC} id={style.banner}>
+            <div ref={ProjC} className="banner_col">
                 <h1>PROJECTS</h1>
                 <hr></hr>
                 <div className={`${style.projs} grid`}>
                     <div className='background'>
-                        <img src={quiz}></img>
+                        <div className={style.images}><img src={quiz}></img></div>
                         <div>
                             <h2>Quiz Game</h2>
                             <h3>04/2021</h3>
@@ -32,7 +28,7 @@ export default function Proj({ ProjC}) {
                         </div>
                     </div>
                     <div className='background'>
-                        <img src={movie}></img>
+                        <div className={style.images}><img src={movie}></img></div>
                         <div>
                             <h2>MOVIE STREAMING WEBSITE</h2>
                             <h3>02/2023</h3>
@@ -45,7 +41,7 @@ export default function Proj({ ProjC}) {
                         </div>
                     </div>
                     <div className='background'>
-                        <img src={crawl}></img>
+                        <div className={style.images}><img src={crawl}></img></div>
                         <div >
                             <h2>Web Crawler</h2>
                             <h3>12/2023</h3>

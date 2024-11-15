@@ -4,7 +4,7 @@ import sti from './exp.module.css'
 export default function Exp({ExpC}) {
     return (
     <>
-        <div ref={ExpC}id={sti.ban}>
+        <div ref={ExpC} className='banner_col'>
             <div className={`decor`}>
                 <hr></hr>
                 <h1>EXPERIENCE</h1>

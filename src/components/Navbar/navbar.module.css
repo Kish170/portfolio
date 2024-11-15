@@ -60,15 +60,9 @@
     display: none;
 }
 
-#ice {
-    color: white;
-    width: 10px;
-    background-color: #DA4450;
-    border: solid;
-    border-radius: 100%;
-}
 
-@media (max-width: 767px) {
+
+@media (max-width: 910px) {
     #name {
         display: none;
     }
@@ -90,5 +84,9 @@
 
     .nav.close {
         animation: none;
+    }
+
+    .ice {
+        display: none;
     }
 }

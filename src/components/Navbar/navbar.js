@@ -25,7 +25,7 @@ const Navbar = ({refs}) => {
                     document.getElementsByClassName(style.nav)[0].classList.add(style.close);    
                 // },100)
                 
-            } else if ((curScroll - prevScroll.current) <= -20 ){
+            } else if ((curScroll - prevScroll.current) <= -1 ){
                 // setTimeout (() => {
                     document.getElementsByClassName(style.nav)[0].classList.remove(style.close);
                     document.getElementsByClassName(style.nav)[0].style.display = "flex";  
@@ -49,7 +49,7 @@ const Navbar = ({refs}) => {
                     <Link id="projs" className="pages" onClick={() => scrollTo("ProjC")}>Projects</Link>
                     <Link id="exps" className="pages" onClick={() => scrollTo("ExpC")}>Experience</Link>
                     {/* <button type="toggle" id={style.ice}></button> */}
-                    <Switch id={style.ice} onChange={themeSwitch} checked={theme === 'dark'}/>
+                    <div className={style.ice}><Switch  onChange={themeSwitch} checked={theme === 'dark'}/></div>
                 </div> 
                 <div id={style.box}></div>
             </div>

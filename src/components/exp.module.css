@@ -1,120 +1,45 @@
-
-#ban {
-    padding: 5%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-}
-
 .expb {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 2% 6%;
 }
 
-
 .exps {
-    margin: 2%;
-    width: 50vh;
+    height: 40em;
+    /* margin: 2%; */
+    width: 30em;
     box-sizing: border-box;
-    padding: 5%;
+    padding: 10%;
     transition: transform 0.3s;
+    border-radius: 25px;
 }
 
 .exps > * {
     padding: 4%;
 }
 
-/* .exps:hover {
-    transform: scale(0.9);
-} */
-
-/* .exps::before{
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: 0;
-    height: 0;
-    background: transparent;
-    border: 2px solid transparent;
-}
-
-.exps:hover::before{
-    animation: anim 1s linear forwards;
-} */
-
-/* @keyframes anim {
-    0% {
-        width: 0;
-        height: 0;
-        border-top-color: black;
-    }
-
-    25% {
-        width: 100%;
-        height: 0;
-        border-top-color: black;
-        border-right-color: black;
-    }
-
-    50% {
-        width: 100%;
-        height: 100%;
-        border-top-color: black;
-        border-right-color: black;
-        border-bottom-color: black;
-    }
-
-    75% {
-        width: 100%;
-        height: 100%;
-        border-top-color: black;
-        border-right-color: black;
-        border-bottom-color: black;
-        border-left-color: black;
-    }
-
-    100% {
-        width: 100%;
-        height: 100%;
-        border-top-color: black;
-        border-right-color: black;
-        border-bottom-color: black;
-        border-left-color: black;
-    }
-    
-} */
-
-
-/* 
-
-
 @media (max-width:1024px) {
-    #ban {
-        display: inline-block;
-        text-align: center;
-    }
-
-    #ban > h1 {
-        left:auto;
-    }
-}
-
-@media (max-width: 540px) {
     .expb {
-        display: inline-block;
-        justify-content: center;
-        align-items: center;
-        margin-left: -8%;
+        grid-template-columns: auto;
     }
-
+    .exps {
+        width: 40em;
+        padding-inline: 5%;
+        margin-right: 10%;
+    }
 }
 
-@media (max-width: 430px) {
+@media (max-width:767px) {
     .exps {
-        width: 40vh;
+        width: 30em;
     }
-} */
+}
+
+@media (max-width:539px) {
+    .exps {
+        width: 20em;
+    }
+}
+

@@ -3,7 +3,7 @@
     height: 10vh;
     display: flex;
     justify-content: flex-start;
-    padding: 2%;
+    padding-inline: 10%;
 }
 
 #banner > * {
@@ -23,16 +23,15 @@
     width: 6vh;
 }
 
-/* @media (min-width:1024px) {
-    #banner > a > img {
-        text-align: right;
-        right: 0;
-        width: 5vh;
-        height: auto;
-        margin-top: 5%;
-        margin: 5%;
-        padding: 2%;
-        transition: width 0.4s ease;
+@media (width:912px) {
+    #banner {
+        padding-inline: 20%;
     }
-} */
+}
+
+@media (max-width:911px) {
+    #banner {
+        display: none;
+    }
+}
 

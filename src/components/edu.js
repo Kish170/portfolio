@@ -40,13 +40,15 @@ export default function Edu({EduC}) {
 
     return (
     <>
-        <div ref={EduC} className="background" id={style.banner}>
+        <div ref={EduC} className={`background banner_col `}>
             <div id={style.selection}>
                 <h1>SKILLS</h1> 
                 <hr></hr>
-                <button className="pages" onClick={() => setVisibility("lang")}>Languages</button>
-                <button className="pages" onClick={() => setVisibility("tools")}>Developer Tools</button>
-                <button className="pages" onClick={() => setVisibility("tech")}>Technologies</button>
+                <div id={style.options}>
+                    <button className="pages" onClick={() => setVisibility("lang")}>Languages</button>
+                    <button className="pages" onClick={() => setVisibility("tools")}>Developer Tools</button>
+                    <button className="pages" onClick={() => setVisibility("tech")}>Technologies</button>
+                </div>
             </div>
             <div className={`${style.lang} ${style.grid}`} >
                 <div>    

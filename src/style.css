@@ -25,14 +25,14 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: 0;
+    box-sizing: border-box;
     background-color: var(--bg-color);
     color: aliceblue;  
     scroll-behavior: smooth;
 }
 
 h1 {
-    font-size: x-large;
+    font-size: xx-large;
     margin: 2%;
 }
 
@@ -89,11 +89,65 @@ p , h1, h2 , h3, .pages, li {
 
 #name {
     color:var(--prime);
+    font-size: x-large;
+    font-family: "Silkscreen", sans serif;
 }
+
+.typer {
+    font-size: xxx-large;
+}
+
+.banner_col {
+    border-radius: 25px;
+    padding-bottom: 10%;
+    padding-top:5%;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+@media (max-width:912px) {
+    hr {
+        width: 100px;
+    }
+}
+
+@media (max-width:540px) {
+    hr {
+        width: 80px;
+    }
+}
+
+@media (max-width:912px) {
+    .banner_col {
+        width: 60%;
+    }
+}
+
+@media (max-width:540px) {
+    .banner_col {
+        width: 40%;
+        padding-bottom: 15%;
+    }
+}
+
+@media (max-width: 539px) {
+    .banner_col {
+        width: 30%;
+    }
+}
+
 
 @media (max-width: 767px) {
     h3 {
-        font-size: medium;
+        font-size: medium ;
+    }
+    .typer {
+        font-size: x-large;
     }
     h1 {
         font-size: x-large;
@@ -101,6 +155,11 @@ p , h1, h2 , h3, .pages, li {
     p {
         font-size: medium;
     }
+    #name {
+        display: none;
+    }
 }
+
+
 
 
