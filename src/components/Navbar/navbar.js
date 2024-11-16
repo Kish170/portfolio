@@ -3,6 +3,8 @@ import style from './navbar.module.css';
 import { Link } from "react-router-dom";
 import Switch from "react-switch";
 import '../../style.css';
+import moon from '../../images/moon.png'
+import sun from '../../images/sun.png'
 
 const Navbar = ({refs}) => {
     const [theme, setTheme] = useState('dark');
@@ -40,7 +42,7 @@ const Navbar = ({refs}) => {
 
     return (
         <>
-            <div className={style.nav}>
+            <div className={`${style.nav} nav`}>
                 <h1 id="name">Kishan Rajagunathas</h1>
                 <div className={style.menu}>
                     <Link id="home" className="pages" onClick={() => scrollTo("HeroC")}>Home</Link>
@@ -48,8 +50,21 @@ const Navbar = ({refs}) => {
                     <Link id="edu" className="pages" onClick={() => scrollTo("EduC")}>Education</Link>
                     <Link id="projs" className="pages" onClick={() => scrollTo("ProjC")}>Projects</Link>
                     <Link id="exps" className="pages" onClick={() => scrollTo("ExpC")}>Experience</Link>
-                    {/* <button type="toggle" id={style.ice}></button> */}
-                    <div className={style.ice}><Switch  onChange={themeSwitch} checked={theme === 'dark'}/></div>
+                    <div className="divice">
+                        <Switch 
+                            className="ice"
+                            onChange={themeSwitch} 
+                            checked={theme === 'dark'}
+                            onColor="#CC2936"
+                            offColor="#29CCBF"
+                            onHandleColor="#d1d1d1"
+                            offHandleColor="#d1d1d1"
+                            height={30}
+                            width={50}
+                            checkedIcon = {false}
+                            uncheckedIcon = {false}
+                        />
+                    </div>
                 </div> 
                 <div id={style.box}></div>
             </div>

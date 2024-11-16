@@ -7,6 +7,11 @@
     width: 2%;
     border-radius: 25px;
 }
+
+.border {
+    opacity: 0;
+}
+
 .projs > * {
     text-align: left;
     display: flex;
@@ -43,6 +48,20 @@
     height: 100%;
     object-fit: cover; 
 }
+
+.slidein {
+    animation: slidein 0.7s forwards;
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(-100%);
+    } to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
 
 @media (max-width: 912px) {
     .projs > * {

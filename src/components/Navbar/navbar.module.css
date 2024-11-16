@@ -16,9 +16,6 @@
     justify-content: center;
     margin: 3%;
     padding: 1%;
-    border: #E47780;
-    border-style: solid;
-    background-color: rgba(38, 38, 38, 0.8);
     animation: open 0.8s forwards;
 }
 
@@ -84,9 +81,5 @@
 
     .nav.close {
         animation: none;
-    }
-
-    .ice {
-        display: none;
     }
 }

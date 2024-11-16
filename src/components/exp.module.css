@@ -6,6 +6,10 @@
     gap: 2% 6%;
 }
 
+.border {
+    opacity: 0;
+}
+
 .exps {
     height: 40em;
     /* margin: 2%; */
@@ -18,6 +22,19 @@
 
 .exps > * {
     padding: 4%;
+}
+
+.slidein {
+    animation: slidein 0.7s forwards;
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(100%);
+    } to {
+        opacity: 1;
+        transform: translateX(0%);
+    }
 }
 
 @media (max-width:1024px) {

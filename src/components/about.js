@@ -13,13 +13,8 @@ export default function About({ AboutC }) {
   const callbackFunction = (entries) => {
     const[entry] = entries
     if (entry.isIntersecting) {
-      // document.getElementById(style.border).classList.remove(style.slideout)
       document.getElementById(style.border).classList.add(style.slidein)
-      
-    } else {
-      // document.getElementById(style.border).classList.add(style.slideout)
-      // document.getElementById(style.border).classList.remove(style.slidein)
-    }
+    } 
   }
   useEffect (() => {
     const section = sectionRef.current
@@ -34,7 +29,7 @@ export default function About({ AboutC }) {
   return (
     <>
       <div ref={sectionRef}>
-        <div ref={AboutC} id={style.border} class={`background banner_col`}>
+        <div ref={AboutC} id={style.border} className={`background banner_col`}>
           <div className={`decor`} id={style.decor}>
             <hr></hr>
             <h1>ABOUT ME</h1>

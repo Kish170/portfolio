@@ -4,6 +4,9 @@
     --comp-bg: #525252;
     --prime: #CC2936;
     --accent: #FFDF00;
+    --border: #E47780;
+    --tran-bg: rgba(38, 38, 38, 0.8);
+    --hover-bg: background-color: rgb(255, 223, 0, 0.5);
 }
 
 .light {
@@ -11,7 +14,10 @@
     --links_p: black;
     --comp-bg: #d1d1d1;
     --prime: #29CCBF;
-    --accent: #003a34;
+    --accent: #016d62;
+    --border: #77e4db;
+    --tran-bg: rgba(209, 209, 209, 0.8);
+    --hover-bg: rgb(1, 109, 98, 0.5);
 }
 
 .dark {
@@ -20,6 +26,9 @@
     --comp-bg: #525252;
     --prime: #CC2936;
     --accent: #FFDF00;
+    --border: #E47780;
+    --tran-bg: rgba(38, 38, 38, 0.8);
+    --hover-bg: rgb(255, 223, 0, 0.5);
 }
 
 *{
@@ -95,6 +104,54 @@ p , h1, h2 , h3, .pages, li {
 
 .typer {
     font-size: xxx-large;
+    animation: typing 3s steps(20, end), blink-caret .75s step-end infinite;
+    overflow: hidden;
+    background: linear-gradient(to right, var(--prime), white);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    border-right: .15em solid var(--prime);
+    width: fit-content;
+    display: inline;
+    white-space: nowrap;
+    background-color: var(--prime);
+}
+
+.skills > *:hover > *{
+    background-color: rgb(255, 223, 0, 0);
+    transform: scale(1.1);
+}
+
+.skills > *:hover{
+    transform: rotateY(720deg);
+    background-color: var(--hover-bg);
+    transform: scale(1.1);
+}
+
+
+
+@keyframes typing {
+    from {
+        width:0;
+    } 
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    0%{
+        border-color: transparent
+    } 50% { 
+        border-color: var(--prime)  
+    } 100% {
+        border-color: transparent
+    }
+}
+
+.nav {
+    border: var(--border);
+    border-style: solid;
+    background-color: var(--tran-bg);
 }
 
 .banner_col {
@@ -110,28 +167,39 @@ p , h1, h2 , h3, .pages, li {
     width: 80%;
 }
 
-@media (max-width:912px) {
-    hr {
-        width: 100px;
-    }
+.ice{
+    margin-top: 10%;
+}
+
+.accents {
+    color: var(--accent);
 }
 
 @media (max-width:540px) {
     hr {
         width: 80px;
     }
-}
-
-@media (max-width:912px) {
-    .banner_col {
-        width: 60%;
-    }
-}
-
-@media (max-width:540px) {
     .banner_col {
         width: 40%;
         padding-bottom: 15%;
+    }
+}
+
+@media (max-width:912px) {
+    hr {
+        width: 100px;
+    }
+    .banner_col {
+        width: 60%;
+    }
+    .divice {
+        display: none;
+    }
+}
+
+@media (max-width: 540px) {
+    .banner_col {
+        width: 40%;
     }
 }
 

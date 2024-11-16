@@ -17,36 +17,8 @@
     width: fit-content;
 }
 
-#typer {
-    animation: typing 3s steps(20, end), blink-caret .75s step-end infinite;
-    overflow: hidden;
-    background: linear-gradient(to right, #CC2936, white);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    border-right: .15em solid #CC2936;
-    width: fit-content;
-    display: inline;
-    white-space: nowrap;
-    background-color: #CC2936;
-}
-
-@keyframes typing {
-    from {
-        width:0;
-    } 
-    to {
-        width: 100%;
-    }
-}
-
-@keyframes blink-caret {
-    0%{
-        border-color: transparent
-    } 50% { 
-        border-color: #CC2936  
-    } 100% {
-        border-color: transparent
-    }
+#slotanim {
+    height: 80px;
 }
 
 @media (max-width: 767px) {
@@ -54,15 +26,6 @@
         padding-top: 20%;
         padding-bottom: 20%;
     }
-    /* #banner > h3 {
-        font-size: medium;
-    }
-    #typer {
-        font-size: x-large;
-    }
-    #banner > p {
-        font-size: medium;
-    } */
 }
 
 
