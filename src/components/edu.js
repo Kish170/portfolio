@@ -91,7 +91,7 @@ export default function Edu({EduC}) {
                         <p>CSS</p>
                     </div>
                 </div>
-                <div className={`${style.tools} ${style.grid}`} >
+                <div className={`${style.tools} ${style.grid} skills`} >
                     <div>
                         <img src={vs}></img>
                         <p> VS code</p>
@@ -109,7 +109,7 @@ export default function Edu({EduC}) {
                         <p>Processing</p>
                     </div>
                 </div>
-                <div className={`${style.tech} ${style.grid}`} >
+                <div className={`${style.tech} ${style.grid} skills`} >
 
                     <div>
                         <img src={java}></img>

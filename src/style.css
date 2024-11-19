@@ -7,6 +7,8 @@
     --border: #E47780;
     --tran-bg: rgba(38, 38, 38, 0.8);
     --hover-bg: background-color: rgb(255, 223, 0, 0.5);
+    --linkimg: "./images/linkdin.png";
+    --gitimg: "./images/git.png";
 }
 
 .light {
@@ -18,6 +20,8 @@
     --border: #77e4db;
     --tran-bg: rgba(209, 209, 209, 0.8);
     --hover-bg: rgb(1, 109, 98, 0.5);
+    --linkimg: url("./images/linkdinlight.png");
+    --gitimg: url("./images/gitlight.png");
 }
 
 .dark {
@@ -29,6 +33,8 @@
     --border: #E47780;
     --tran-bg: rgba(38, 38, 38, 0.8);
     --hover-bg: rgb(255, 223, 0, 0.5);
+    --linkimg: url("./images/linkdin.png");
+    --gitimg: url("./images/git.png");
 }
 
 *{
@@ -106,7 +112,7 @@ p , h1, h2 , h3, .pages, li {
     font-size: xxx-large;
     animation: typing 3s steps(20, end), blink-caret .75s step-end infinite;
     overflow: hidden;
-    background: linear-gradient(to right, var(--prime), white);
+    background: linear-gradient(to right, var(--prime), var(--links_p));
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     border-right: .15em solid var(--prime);
@@ -127,6 +133,25 @@ p , h1, h2 , h3, .pages, li {
     transform: scale(1.1);
 }
 
+#git {
+    background-image: var(--gitimg);
+}
+
+#link {
+    background-image: var(--linkimg);
+}
+
+#git, #link {
+    width: 50px; 
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.4s ease;
+}
+
+#git:hover, #link:hover {
+    transform: scale(1.1);
+}
 
 
 @keyframes typing {
@@ -152,6 +177,7 @@ p , h1, h2 , h3, .pages, li {
     border: var(--border);
     border-style: solid;
     background-color: var(--tran-bg);
+    backdrop-filter: blur(6px);
 }
 
 .banner_col {
@@ -175,14 +201,13 @@ p , h1, h2 , h3, .pages, li {
     color: var(--accent);
 }
 
-@media (max-width:540px) {
-    hr {
-        width: 80px;
-    }
-    .banner_col {
-        width: 40%;
-        padding-bottom: 15%;
-    }
+.footer {
+    color: var(--accent);
+}
+
+.footlinks {
+    margin-left: auto;
+    display: flex;
 }
 
 @media (max-width:912px) {
@@ -195,20 +220,13 @@ p , h1, h2 , h3, .pages, li {
     .divice {
         display: none;
     }
-}
-
-@media (max-width: 540px) {
-    .banner_col {
-        width: 40%;
+    #git {
+        width: 40px;
+    }
+    #link {
+        width: 40px;
     }
 }
-
-@media (max-width: 539px) {
-    .banner_col {
-        width: 30%;
-    }
-}
-
 
 @media (max-width: 767px) {
     h3 {
@@ -225,6 +243,25 @@ p , h1, h2 , h3, .pages, li {
     }
     #name {
         display: none;
+    }
+    .banner_col {
+        width: 40%;
+    }
+    
+}
+
+@media (max-width:540px) {
+    hr {
+        width: 80px;
+    }
+    .banner_col {
+        padding-bottom: 15%;
+    }
+}
+
+@media (max-width: 539px) {
+    .banner_col {
+        width: 30%;
     }
 }
 

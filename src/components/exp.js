@@ -6,7 +6,7 @@ export default function Exp({ExpC}) {
     const sectionRef = useRef(null)
     const options = {
         root: null,
-        threshold: 0.2,
+        threshold: 0.05,
         rootMargin: "0px"
     }
     const callbackFunction = (entries) => {

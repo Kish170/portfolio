@@ -14,14 +14,14 @@
     padding-right: 0;
 }
 
-#banner > a > img {
-    transition: width 0.4s ease;
+/* #banner > div > a > div {
+    transition: transform 0.4s ease;
     width: 5vh;
 }
 
-#banner > a > img:hover {
-    width: 6vh;
-}
+#banner > div > a > div:hover {
+    transform: scale(1.1);
+} */
 
 @media (width:912px) {
     #banner {

@@ -48,16 +48,22 @@ useEffect (() => {
         intervals.push(id);
     }
 
-    // 
     return () => intervals.forEach(clearInterval);
 },[wordIndex])
 
 
 return (
 <>
+    <div id={style.hlinks} className='footlinks'>
+        <a href="https://www.linkedin.com/in/kishan-rajagunathas-54a2a7245/">
+            <div id="link"/>
+        </a>
+        <a href="https://github.com/Kish170">
+            <div id="git"/>
+        </a>
+    </div>
     <div ref={HeroC} id={style.banner}>
         <h3>WELCOME TO MY PORTFOLIO WEBSITE</h3>
-        
         <h1 className="typer" id={style.typer}>Hello World, I'm Kishan</h1>
         <div  id={style.slotanim}>
             <h1 className="accents">{letterIndex.join('')}</h1>
