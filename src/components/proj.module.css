@@ -1,15 +1,9 @@
 .projs {
-    display: grid;
-    grid-template-columns: auto;
-    margin: 5%;
-    gap: 2% 6%;
-    /* width: 70em; */
-    width: 2%;
-    border-radius: 25px;
-}
-
-.border {
-    opacity: 0;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .projs > * {
@@ -17,36 +11,69 @@
     display: flex;
     flex-direction: row;
     border-radius: 25px;
-    margin-inline: 10%; 
-    padding-inline: 5%;
-}
-
-.projs > * > *{
-    padding: 3%;
-    margin-inline: 3%;
-}
-
-.projs > * > p{
-    padding-left: 0;
-    margin-inline: 3%;
-}
-
-
-.projs > * > * > p {
-    padding-top: 3%;
+    margin: 2%; 
+    height: 600px;
+    object-fit: contain;
+    overflow: hidden;
+    position: relative;
+    width: 90%;
 }
 
 .images {
-    width: 1100px;
-    margin: 0;
-    padding:0;
-    padding-left: 2%;
+    width: 100%;
+    height: fit-content;
+    padding: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
 }
 
-.images img {
+.images > img {
+    border-radius: 25px;
+    width:100%;
+    height: 500px;
+    object-fit:cover;
+    object-position:50% 50%;
+}
+
+.descrip:hover  {
+    background-color: rgba(38, 38, 38, 0.8);
+    opacity: 1;
+}
+
+.descrip:hover  .descrip>*{
+    opacity: 1;
+}
+
+.descrip {
+    opacity: 0;
+    position: absolute;
+    padding: 20%;
+    padding-inline: 10%;
+    background-color: transparent;
+    transition: 1s opacity;
+}
+
+.descrip > * {
+    /* opacity: 0; */
+    transition: 1s opacity;
+}
+
+.foreground {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    opacity: 0;
+    position: absolute;
+}
+
+.foreground:hover {
+    background-color: rgba(38, 38, 38, 0.8);
+    opacity: 1;
+}
+
+.descrip > * {
+    background-color: transparent;
 }
 
 .slidein {
@@ -62,7 +89,7 @@
     }
 }
 
-
+/* 
 @media (max-width: 912px) {
     .projs > * {
         margin-inline: 20%; 
@@ -79,4 +106,4 @@
     .projs > * {
         margin-inline: 35%; 
     }
-}
+} */

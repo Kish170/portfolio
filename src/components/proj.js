@@ -36,47 +36,45 @@ export default function Proj({ ProjC}) {
                 <div ref={ProjC} className={`banner_col ${style.border} `}>
                     <h1>PROJECTS</h1>
                     <hr></hr>
-                    <div className={`${style.projs} grid`}>
-                        <div className='background'>
+                    <div className={style.projs}>
+                        <div>
                             <div className={style.images}><img src={quiz}></img></div>
-                            <div>
+                            <div className={style.descrip}>
                                 <h2>Quiz Game</h2>
                                 <h3>04/2021</h3>
-                                <p>I created a quiz game focused on Computer Science topics 
-                                    using Processing which facilitated the development of this visually 
-                                    oriented application. To make the game appear more appealing I 
-                                    incorporated animations and sound effects and created a scoreboard 
-                                    so users could see their progress over time. I used third-party libraries 
-                                    to perform certain functionalities such as creating a timer and adding sound 
-                                    effects to captivate further and engage users
+                                <p>This project is a quiz game focused on Computer Science topics 
+                                    using Processing. I have incorporated animations, sound effects
+                                    and a scoreboard so users could see their progress over time. 
+                                    I used third-party libraries  to perform certain functionalities 
+                                    such as creating a timer and adding sound effects.
                                 </p>
                             </div>
                         </div>
-                        <div className='background'>
+                        <div>
                             <div className={style.images}><img src={movie}></img></div>
-                            <div>
+                            <div className={style.descrip}>
                                 <h2>MOVIE STREAMING WEBSITE</h2>
                                 <h3>02/2023</h3>
-                                <p>I created a movie streaming website that allows users to browse through 
-                                    movies based on their search queries or through specific genres. In order to deploy 
-                                    the web application, store data retrieved from the API, and provide secure user authentication,
-                                    I used Firebase technologies: Hosting, Firebase, and Authentication. Utilized Axios to make 
+                                <p>This project is a movie streaming website that allows users to browse through 
+                                    movies based on their search queries or through specific genres. Optimized Firebase 
+                                    to store data, deploy the website and secure authentication. Utilized Axios to make 
                                     it easy to interact and retrieve data from the TMDb API
                                 </p>
                             </div>
                         </div>
-                        <div className='background'>
+                        <div>
                             <div className={style.images}><img src={crawl}></img></div>
-                            <div >
+                            <div className={style.descrip}>
                                 <h2>Web Crawler</h2>
                                 <h3>12/2023</h3>
-                                <p>This project implements a web crawler and search engine in Java 
-                                    (with a version also in python that does not have a GUI). The 
-                                    crawler navigates the web starting from a seed URL, collecting 
-                                    data from various web pages, and storing the information necessary 
-                                    for search and ranking purposes. The search engine component processes 
-                                    user queries, providing relevant search results based on the collected 
-                                    data using various PageRank algorithms.
+                                <p>This project uses Java to construct a web crawler and search engine
+                                    (with a Python version that lacks a graphical user interface). 
+                                    Beginning with a seed URL, the crawler searches the web, gathering 
+                                    information from different web pages and storing it for use in search 
+                                    and ranking. Utilizing a variety of PageRank algorithms, the search 
+                                    engine component analyzes user queries and returns pertinent search 
+                                    results based on the information gathered.
+                               
                                 </p>
                             </div>
                         </div>

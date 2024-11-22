@@ -190,7 +190,7 @@ p , h1, h2 , h3, .pages, li {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: 90%;
 }
 
 .ice{
@@ -213,9 +213,6 @@ p , h1, h2 , h3, .pages, li {
 @media (max-width:912px) {
     hr {
         width: 100px;
-    }
-    .banner_col {
-        width: 60%;
     }
     .divice {
         display: none;
@@ -244,9 +241,6 @@ p , h1, h2 , h3, .pages, li {
     #name {
         display: none;
     }
-    .banner_col {
-        width: 40%;
-    }
     
 }
 
@@ -261,7 +255,7 @@ p , h1, h2 , h3, .pages, li {
 
 @media (max-width: 539px) {
     .banner_col {
-        width: 30%;
+        padding-bottom: 20%;
     }
 }
 

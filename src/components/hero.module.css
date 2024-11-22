@@ -40,7 +40,7 @@
         padding-left: auto;
     }
     #hlinks > * {
-        padding: 1%;
+        margin: 4%;
         width: 5%;
     }
 }
