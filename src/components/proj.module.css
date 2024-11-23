@@ -12,7 +12,7 @@
     flex-direction: row;
     border-radius: 25px;
     margin: 2%; 
-    height: 600px;
+    height: 500px;
     object-fit: contain;
     overflow: hidden;
     position: relative;
@@ -30,6 +30,8 @@
 }
 
 .images > img {
+    padding: 0;
+    margin: 0;
     border-radius: 25px;
     width:100%;
     height: 500px;
@@ -49,7 +51,7 @@
 .descrip {
     opacity: 0;
     position: absolute;
-    padding: 20%;
+    padding: 100%;
     padding-inline: 10%;
     background-color: transparent;
     transition: 1s opacity;
@@ -79,6 +81,10 @@
 .slidein {
     animation: slidein 0.7s forwards;
 }
+/* 
+#smallscreens {
+    display: none;
+} */
 
 @keyframes slidein {
     from {
@@ -89,21 +95,27 @@
     }
 }
 
-/* 
 @media (max-width: 912px) {
-    .projs > * {
-        margin-inline: 20%; 
+    .images > img {
+        height: 400px;
     }
 }
+
+/* when you get here change the way you display the content for small screens*/
 
 @media (max-width: 767px) {
-    .projs > * {
-        margin-inline: 30%; 
+    .foreground {
+        display: none;
     }
+
+    .projs > * {
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+        margin: 2%; 
+        width: 90%;
+    }
+
 }
 
-@media (max-width: 430px) {
-    .projs > * {
-        margin-inline: 35%; 
-    }
-} */

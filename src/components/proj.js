@@ -79,8 +79,12 @@ export default function Proj({ ProjC}) {
                             </div>
                         </div>
                     </div>
+                    {/* <div id={style.smallscreens}> 
+
+                    </div> */}
                 </div>
             </div>
+            
         </>
     );
 }
