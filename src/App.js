@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar/Navbar.js";
+import Navbar from "./components/Navbar/navbar.js";
 import About from "./components/about.js"
 import Hero from "./components/hero"
 import Edu from "./components/edu.js";
