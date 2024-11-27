@@ -4,11 +4,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2% 6%;
-    padding-bottom: 10%;
-}
-
-.border {
-    opacity: 0;
+    padding-bottom: 0%;
 }
 
 ul {

@@ -1,90 +1,66 @@
-.projs {
-    width: fit-content;
-    height: fit-content;
+.box {
     display: flex;
     flex-direction: column;
+}
+
+.border {
+    position: relative;
+    perspective: 1000px;
+    margin: 20% auto;
+}
+
+.projs {
+    display: flex;
     justify-content: center;
+    transform: translateZ(-288px);
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 40%;
+    /* margin: 20% auto; */
 }
 
 .projs > * {
+    position: absolute;
     text-align: left;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     border-radius: 25px;
     margin: 2%; 
-    height: 500px;
-    object-fit: contain;
-    overflow: hidden;
-    position: relative;
     width: 90%;
+    border-radius: 25px;
+    padding-inline: 2%;
+    padding-top: 2%;
 }
 
 .images {
     width: 100%;
-    height: fit-content;
-    padding: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    object-fit: cover;
+    height: 300px;
+    display: flex;
+    justify-content: center;
 }
 
 .images > img {
-    padding: 0;
-    margin: 0;
     border-radius: 25px;
     width:100%;
-    height: 500px;
+    height: 275px;
     object-fit:cover;
     object-position:50% 50%;
 }
 
-.descrip:hover  {
-    background-color: rgba(38, 38, 38, 0.8);
-    opacity: 1;
-}
-
-.descrip:hover  .descrip>*{
-    opacity: 1;
-}
-
 .descrip {
-    opacity: 0;
-    position: absolute;
-    padding: 100%;
-    padding-inline: 10%;
-    background-color: transparent;
-    transition: 1s opacity;
+    height: 500px;
+    padding: 10%;
+    padding-top: 5%;
+    padding-inline: 0;
 }
 
 .descrip > * {
-    /* opacity: 0; */
     transition: 1s opacity;
-}
-
-.foreground {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-}
-
-.foreground:hover {
-    background-color: rgba(38, 38, 38, 0.8);
-    opacity: 1;
-}
-
-.descrip > * {
-    background-color: transparent;
 }
 
 .slidein {
     animation: slidein 0.7s forwards;
 }
-/* 
-#smallscreens {
-    display: none;
-} */
 
 @keyframes slidein {
     from {
@@ -95,27 +71,14 @@
     }
 }
 
-@media (max-width: 912px) {
-    .images > img {
-        height: 400px;
-    }
+
+.carousel_cell:nth-child(1) { 
+    transform: rotateY(0deg) translateZ(288px); 
 }
-
-/* when you get here change the way you display the content for small screens*/
-
-@media (max-width: 767px) {
-    .foreground {
-        display: none;
-    }
-
-    .projs > * {
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        border-radius: 25px;
-        margin: 2%; 
-        width: 90%;
-    }
-
+.carousel_cell:nth-child(2) { 
+    transform: rotateY(120deg) translateZ(288px); 
+}
+.carousel_cell:nth-child(3) { 
+    transform: rotateY(240deg) translateZ(288px); 
 }
 

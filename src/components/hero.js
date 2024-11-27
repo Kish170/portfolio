@@ -52,7 +52,7 @@ useEffect (() => {
 },[wordIndex])
 
 
-return ("fuck me",
+return (
 <>
     <div id={style.hlinks} className='footlinks'>
         <a href="https://www.linkedin.com/in/kishan-rajagunathas-54a2a7245/">
