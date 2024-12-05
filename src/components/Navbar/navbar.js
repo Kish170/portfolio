@@ -3,8 +3,6 @@ import style from './navbar.module.css';
 import { Link } from "react-router-dom";
 import Switch from "react-switch";
 import '../../style.css';
-import moon from '../../images/moon.png'
-import sun from '../../images/sun.png'
 
 const Navbar = ({refs}) => {
     const [theme, setTheme] = useState('dark');
@@ -23,15 +21,10 @@ const Navbar = ({refs}) => {
         const handleScroll = () => {
             const curScroll = window.scrollY;
             if ((curScroll - prevScroll.current) >= 20) {
-                // setTimeout (() => {
                     document.getElementsByClassName(style.nav)[0].classList.add(style.close);    
-                // },100)
-                
             } else if ((curScroll - prevScroll.current) <= -1 ){
-                // setTimeout (() => {
                     document.getElementsByClassName(style.nav)[0].classList.remove(style.close);
                     document.getElementsByClassName(style.nav)[0].style.display = "flex";  
-                // },100)
             }
             prevScroll.current = curScroll;
         };
@@ -68,7 +61,6 @@ const Navbar = ({refs}) => {
                 </div> 
                 <div id={style.box}></div>
             </div>
-           
         </>
     );
 };

@@ -27,6 +27,7 @@ img {
 
 #options > * {
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .grid {
@@ -46,6 +47,7 @@ img {
     margin: 2%;
     width: 200px;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 

@@ -24,7 +24,7 @@ export default function About({ AboutC }) {
     return () => {
       theObserver.unobserve(section);
     }
-  }, [])
+  }, [options])
 
   return (
     <>

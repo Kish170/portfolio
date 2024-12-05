@@ -6,7 +6,7 @@ export default function Exp({ExpC}) {
     const sectionRef = useRef(null)
     const options = {
         root: null,
-        threshold: 0.05,
+        threshold: 0.1,
         rootMargin: "0px"
     }
     const callbackFunction = (entries) => {
@@ -14,9 +14,9 @@ export default function Exp({ExpC}) {
         if (entry.isIntersecting) {
           document.getElementsByClassName(sti.border)[0].classList.add(sti.slidein)
         } 
-      }
+    }
 
-      useEffect (() => {
+    useEffect (() => {
         const section = sectionRef.current
         if (!section) return; 
         const theObserver = new IntersectionObserver(callbackFunction, options)
@@ -24,7 +24,7 @@ export default function Exp({ExpC}) {
         return () => {
             theObserver.unobserve(section);
         }
-    },[]);
+    },[options]);
 
 
     return (

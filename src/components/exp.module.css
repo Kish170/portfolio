@@ -7,6 +7,11 @@
     padding-bottom: 0%;
 }
 
+.border {
+    opacity: 0;
+}
+
+
 ul {
     margin-left: 2em;
 }

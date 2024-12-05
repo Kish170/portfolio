@@ -1,12 +1,19 @@
 .box {
     display: flex;
     flex-direction: column;
+    padding-top: 5%;
+}
+
+
+.projbox {
+    position: relative;
+    perspective: 1000px;
+    margin: 30% auto;
+    width: 100%;
 }
 
 .border {
-    position: relative;
-    perspective: 1000px;
-    margin: 20% auto;
+    opacity: 0;
 }
 
 .projs {
@@ -16,7 +23,8 @@
     transform-style: preserve-3d;
     position: absolute;
     width: 40%;
-    /* margin: 20% auto; */
+    z-index: 5;
+    transition: transform 0.8s ease-in-out;
 }
 
 .projs > * {
@@ -26,10 +34,26 @@
     flex-direction: column;
     border-radius: 25px;
     margin: 2%; 
-    width: 90%;
+    width: 100%;
     border-radius: 25px;
-    padding-inline: 2%;
+    padding-inline: 5%;
     padding-top: 2%;
+}
+
+#prev {
+    position: absolute;
+    left: 10em; 
+    z-index: 10;
+    padding: 0;
+    cursor: pointer;
+}
+
+#next {
+    position: absolute;
+    right: 8em; 
+    z-index: 200;
+    padding: 0;
+    cursor: pointer;
 }
 
 .images {
@@ -81,4 +105,75 @@
 .carousel_cell:nth-child(3) { 
     transform: rotateY(240deg) translateZ(288px); 
 }
+
+@media (max-width:1024px) {
+    .projbox {
+        margin: 40% auto;
+    }
+    #prev {
+        left: 5em;
+    }
+    #next {
+        right:5em;
+    }
+    .projs {
+        width: 50%;
+    }
+}
+
+@media (max-width:911px) {
+    .projbox {
+        margin: 50% auto;
+        margin-bottom: 60%;
+    }
+    #prev {
+        left: 3em;
+    }
+    #next {
+        right: 2em;
+    }
+    .projs {
+        width: 50%;
+    }
+}
+
+@media (max-width:767px) {
+    #prev, #next {
+        display: none;
+    }
+
+    .carousel_cell:nth-child(1) { 
+        transform: none;
+    }
+    .carousel_cell:nth-child(2) { 
+        transform: none;
+    }
+    .carousel_cell:nth-child(3) { 
+        transform: none;
+    }
+
+    .projs {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transform-style: none;
+        width: 90%;
+        transform: none;
+    }
+
+    .projbox {
+        margin: 0% auto;
+        perspective: none;
+    }
+
+    .projs > * {
+        position: relative;
+    }
+    
+    
+
+}
+
+
+
 

@@ -6,14 +6,15 @@ import quiz from '../images/quiz.png'
 import { useEffect, useRef } from 'react';
 
 export default function Proj({ ProjC}) {
-    const index = 0;
-    const carousel = document.getElementsByClassName(style.projs)[0];
-    const cells = document.getElementsByClassName(style.carousel_cell);
+    var index = 0;
+    const cRef = useRef(null);
     const theta = 360/3;
-    const radius = Math.round( ( 500 / 2) / Math.tan( Math.PI / 3 ) );
+    const radius = Math.round( (1000/ 2) / Math.tan( Math.PI / 3 ) );
     const rotate = () => {
-        const angle = theta * index * -1;
-        carousel.style.transform = 'translateZ(' + -radius + 'px) rotateY(' + angle + 'deg)';
+        if (cRef.current) {
+            const angle = theta * index * -1;
+            cRef.current.style.transform = `translateZ(${-radius}px) rotateY(${angle}deg)`;
+        }
     }
     const next = () => {
         index++;
@@ -38,12 +39,17 @@ export default function Proj({ ProjC}) {
       }
 
     useEffect (() => {
-        // for (var i = 0; i < 3; i++) {
-        //     var cell = cells[i];
-        //     if(i < 3) {
+        const resize = () => {
+            if (window.innerWidth <= 767) {
+                cRef.current.style.transform = "none";
+            } else {
+                const angle = theta * index * -1;
+                cRef.current.style.transform = `translateZ(${-radius}px) rotateY(${angle}deg)`;
+            }
+        }
 
-        //     }
-        // }
+        window.addEventListener("resize", resize)
+
         const section = sectionRef.current
         if (!section) return; 
         const theObserver = new IntersectionObserver(callbackFunction, options)
@@ -56,11 +62,11 @@ export default function Proj({ ProjC}) {
 
     return (
         <>
-            <div className={style.box} ref={sectionRef}>
+            <div className={`${style.box} ${style.border}`} ref={sectionRef}>
                 <h1>PROJECTS</h1>
                 <hr></hr>
-                <div ref={ProjC} className={`banner_col ${style.border} `}>
-                    <div className={style.projs}>
+                <div ref={ProjC} className={`banner_col ${style.projbox} `}>
+                    <div ref={cRef} className={style.projs}>
                         <div className={`${style.carousel_cell} background`}>
                             <div className={style.images}><img src={quiz}></img></div>
                             <div className={style.descrip}>
@@ -102,10 +108,12 @@ export default function Proj({ ProjC}) {
                                 </p>
                             </div>
                         </div>
+                       
                     </div>
                 </div>
+                <a onClick={prev} id={style.prev} className='pages'>PREV</a>
+                <a onClick={next} id={style.next} className='pages'>NEXT</a>
             </div>
-            
         </>
     );
 }
