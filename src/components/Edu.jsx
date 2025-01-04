@@ -1,4 +1,4 @@
-import style from './edu.module.css'
+import style from './Edu.module.css'
 import js from '../images/jslogo.png'
 import java from '../images/javalogo.png'
 import python from '../images/python.png'

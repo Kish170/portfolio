@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import style from './navbar.module.css';
+import style from './Navbar.module.css';
 import { Link } from "react-router-dom";
 import Switch from "react-switch";
-import '../../style.css';
+import '../style.css';
 
 const Navbar = ({refs}) => {
     const [theme, setTheme] = useState('dark');
@@ -40,9 +40,9 @@ const Navbar = ({refs}) => {
                 <div className={style.menu}>
                     <Link id="home" className="pages" onClick={() => scrollTo("HeroC")}>Home</Link>
                     <Link id="about" className="pages" onClick={() => scrollTo("AboutC")}>About</Link>
-                    <Link id="edu" className="pages" onClick={() => scrollTo("EduC")}>Education</Link>
-                    <Link id="projs" className="pages" onClick={() => scrollTo("ProjC")}>Projects</Link>
+                    <Link id="edu" className="pages" onClick={() => scrollTo("EduC")}>Skills</Link>
                     <Link id="exps" className="pages" onClick={() => scrollTo("ExpC")}>Experience</Link>
+                    <Link id="projs" className="pages" onClick={() => scrollTo("ProjC")}>Projects</Link>
                     <div className="divice">
                         <Switch 
                             className="ice"

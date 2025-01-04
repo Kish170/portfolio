@@ -1,7 +1,7 @@
 .box {
     display: flex;
     flex-direction: column;
-    padding-top: 5%;
+    padding-top: 2%;
 }
 
 
@@ -82,8 +82,20 @@
     transition: 1s opacity;
 }
 
+.descrip > p {
+    padding: 2%
+}
+
 .slidein {
     animation: slidein 0.7s forwards;
+}
+
+.stack > img {
+    transition: transform 0.2s ease-in-out;
+}
+
+.stack > img:hover {
+    transform: scale(1.1);
 }
 
 @keyframes slidein {

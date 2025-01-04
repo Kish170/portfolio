@@ -6,7 +6,7 @@
     --accent: #FFDF00;
     --border: #E47780;
     --tran-bg: rgba(38, 38, 38, 0.8);
-    --hover-bg: background-color: rgb(255, 223, 0, 0.5);
+    --hover-bg: rgb(255, 223, 0, 0.5);
     --linkimg: "./images/linkdin.png";
     --gitimg: "./images/git.png";
 }
@@ -110,7 +110,7 @@ p , h1, h2 , h3, .pages, li {
 
 .typer {
     font-size: xxx-large;
-    animation: typing 3s steps(20, end), blink-caret .75s step-end infinite;
+    animation: typing 3s steps(20, end), blink-caret 1s step-end infinite;
     overflow: hidden;
     background: linear-gradient(to right, var(--prime), var(--links_p));
     -webkit-text-fill-color: transparent;
@@ -153,6 +153,19 @@ p , h1, h2 , h3, .pages, li {
     transform: scale(1.1);
 }
 
+.repos {
+    width: 30px; 
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.4s ease;
+    background-image: var(--gitimg);
+}
+
+.repos:hover {
+    transform: scale(1.1);
+}
+
 
 @keyframes typing {
     from {
@@ -165,11 +178,11 @@ p , h1, h2 , h3, .pages, li {
 
 @keyframes blink-caret {
     0%{
-        border-color: transparent
+        border-color: transparent;
     } 50% { 
-        border-color: var(--prime)  
+        border-color: var(--prime);
     } 100% {
-        border-color: transparent
+        border-color: transparent;
     }
 }
 

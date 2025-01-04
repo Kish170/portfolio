@@ -1,5 +1,5 @@
 import profile from "../images/profile.JPG";
-import style from "./about.module.css";
+import style from "./About.module.css";
 import { useEffect, useRef } from "react"
 
 export default function About({ AboutC }) {
@@ -38,20 +38,15 @@ export default function About({ AboutC }) {
           <div id={style.abu}>
             <img id={style.profile} src={profile} alt=""></img>
             <p>
-                Hi, I’m Kishan Rajagunathas, currently developing my skills in
-                Front End Web Development, with a goal to transition into Full
-                Stack Development by the end of 2024. I’m pursuing a Bachelor of
-                Science in Computer Science with a Minor in Statistics and
-                Mathematics at Carleton University. <br/><br/>Through various projects,
-                including a Movie Streaming Website (Vue.js, Firebase) and my
-                portfolio (React.js), I’ve built responsive, user-focused
-                applications that demonstrate my solid foundation in web
-                technologies. You can also explore other projects in my
-                portfolio showcasing my skills in Java and Python. <br/> <br/>I’m
-                passionate about solving complex problems and transforming ideas
-                into functional applications. I love diving into new frameworks,
-                algorithms, and technologies, constantly pushing myself to grow
-                as I work towards becoming a Full Stack Developer.
+                Hi, I’m Kishan Rajagunathas, currently pursuing a Bachelor of Science in 
+                Computer Science with a Minor in Statistics and Mathematics at Carleton University. <br/><br/> 
+                Throughout my academic journey, I’ve built a strong foundation in web technologies, 
+                demonstrated by my diverse portfolio of projects and experiences which furthermore showcase my proficiency 
+                across multiple programming languages.
+                <br/> <br/>Recently, I’ve been expanding my expertise in web development and exploring 
+                other exciting fields in computer science, such as machine learning and artificial intelligence. 
+                <br/><br/> Outside of my academic pursuits, I try to be active by playing sports, such as ultimate frisbee, 
+                or taking part in activities like rock climning and weight lifting. 
             </p>
           </div>
         </div>
