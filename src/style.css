@@ -7,8 +7,8 @@
     --border: #E47780;
     --tran-bg: rgba(38, 38, 38, 0.8);
     --hover-bg: rgb(255, 223, 0, 0.5);
-    --linkimg: "./images/linkdin.png";
-    --gitimg: "./images/git.png";
+    --linkimg: "./images/linkdin.svg";
+    --gitimg: "./images/git.svg";
 }
 
 .light {
@@ -20,8 +20,8 @@
     --border: #77e4db;
     --tran-bg: rgba(209, 209, 209, 0.8);
     --hover-bg: rgb(1, 109, 98, 0.5);
-    --linkimg: url("./images/linkdinlight.png");
-    --gitimg: url("./images/gitlight.png");
+    --linkimg: url("./images/linkdinlight.svg");
+    --gitimg: url("./images/gitlight.svg");
 }
 
 .dark {
@@ -33,8 +33,8 @@
     --border: #E47780;
     --tran-bg: rgba(38, 38, 38, 0.8);
     --hover-bg: rgb(255, 223, 0, 0.5);
-    --linkimg: url("./images/linkdin.png");
-    --gitimg: url("./images/git.png");
+    --linkimg: url("./images/linkdin.svg");
+    --gitimg: url("./images/git.svg");
 }
 
 *{
@@ -142,8 +142,8 @@ p , h1, h2 , h3, .pages, li {
 }
 
 #git, #link {
-    width: 50px; 
-    height: 50px;
+    width: 40px; 
+    height: 40px;
     background-size: contain;
     background-repeat: no-repeat;
     transition: transform 0.4s ease;

@@ -1,4 +1,4 @@
-import profile from "../images/profile.JPG";
+import profile from "../images/profile.svg";
 import style from "./About.module.css";
 import { useEffect, useRef } from "react"
 
