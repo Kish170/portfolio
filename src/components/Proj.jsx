@@ -103,7 +103,7 @@ export default function Proj({ProjC}) {
                             <div className={`${style.descrip} background`}>
                                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', padding: '2%'}}>
                                     <div className='background'>
-                                        <h2>MOVIE STREAMING WEBSITE</h2>
+                                        <h2>MOVIE WEBSITE</h2>
                                         <h3>02/2023</h3>
                                         <div className={style.stack}>
                                             <img src={vue}></img>
@@ -139,13 +139,10 @@ export default function Proj({ProjC}) {
                                     </div>
                                     <a href='https://github.com/Ariz-Kazani/Spider-Search-Engine' target='_blank'><div className={`repos`}></div></a>
                                 </div>
-                                <p>This project uses Java to construct a web crawler and search engine
-                                    (with a Python version that lacks a graphical user interface). 
-                                    Beginning with a seed URL, the crawler searches the web, gathering 
-                                    information from different web pages and storing it for use in search 
-                                    and ranking. Utilizing a variety of PageRank algorithms, the search 
-                                    engine component analyzes user queries and returns pertinent search 
-                                    results based on the information gathered.
+                                <p>This project is a Java-based web crawler and search engine 
+                                    (with a Python version without a GUI). Starting from a seed URL, 
+                                    the crawler gathers web page data, which the search engine analyzes 
+                                    using PageRank algorithms to provide relevant search results for user queries.
                                 </p>
                             </div>
                         </div>
