@@ -1,6 +1,6 @@
 import profile from "../images/profile.svg";
 import style from "./About.module.css";
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from "react";
 
 export default function About({ AboutC }) {
   const sectionRef = useRef(null)

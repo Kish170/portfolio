@@ -1,21 +1,23 @@
-import style from './Edu.module.css'
-import js from '../images/jslogo.svg'
-import java from '../images/javalogo.svg'
-import python from '../images/python.svg'
-import html from '../images/html.svg'
-import css from '../images/css.svg'
-import processing from '../images/processing.svg'
-import vs from '../images/vscode.svg'
-import intelli from '../images/intellij.svg'
-import git from '../images/github.svg'
-import vue from '../images/vue.svg'
-import react from '../images/React.webp'
-import json from '../images/json.svg'
-import pinia from '../images/pinia.svg'
-import node from '../images/node.svg'
-import deno from '../images/deno.svg'
-import axios from '../images/axios.webp'
-import firebase from '../images/firebase.svg'
+import style from './Edu.module.css';
+import js from '../images/jslogo.svg';
+import java from '../images/javalogo.svg';
+import python from '../images/python.svg';
+import html from '../images/html.svg';
+import css from '../images/css.svg';
+import processing from '../images/processing.svg';
+import vs from '../images/vscode.svg';
+import intelli from '../images/intellij.svg';
+import git from '../images/github.svg';
+import vue from '../images/vue.svg';
+import react from '../images/React.webp';
+import json from '../images/json.svg';
+import pinia from '../images/pinia.svg';
+import node from '../images/node.svg';
+import deno from '../images/deno.svg';
+import axios from '../images/axios.webp';
+import firebase from '../images/firebase.svg';
+import c from '../images/c-1.svg'
+import cplus from '../images/cplus.svg'
 import { useState, useEffect, useRef } from 'react';
 
 export default function Edu({EduC}) {
@@ -81,6 +83,14 @@ export default function Edu({EduC}) {
                     <div>
                         <img src={python}></img>
                         <p>Python</p>
+                    </div>
+                    <div>
+                        <img src={c}></img>
+                        <p>C</p>
+                    </div>
+                    <div>
+                        <img src={cplus}></img>
+                        <p>C++</p>
                     </div>
                     <div>
                         <img src={html}></img>

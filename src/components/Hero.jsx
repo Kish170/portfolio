@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import style from './Hero.module.css'
+import style from './Hero.module.css';
 
 export default function Hero({HeroC}) {
 

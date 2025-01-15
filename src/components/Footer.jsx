@@ -1,4 +1,4 @@
-import stu from './Footer.module.css'
+import stu from './Footer.module.css';
 export default function Foot() {
     return (
     <>

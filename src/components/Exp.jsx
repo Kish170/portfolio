@@ -1,4 +1,4 @@
-import sti from './Exp.module.css'
+import sti from './Exp.module.css';
 import { useEffect, useRef } from 'react';
 
 export default function Exp({ExpC}) {

@@ -19,12 +19,13 @@
 .projs {
     display: flex;
     justify-content: center;
-    transform: translateZ(-288px);
+    transform: translateZ(-516px);
     transform-style: preserve-3d;
     position: absolute;
     width: 40%;
     z-index: 5;
     transition: transform 0.8s ease-in-out;
+
 }
 
 .projs > * {
@@ -72,7 +73,7 @@
 }
 
 .descrip {
-    height: 500px;
+    height: 550px;
     padding: 10%;
     padding-top: 5%;
     padding-inline: 0;
@@ -109,13 +110,19 @@
 
 
 .carousel_cell:nth-child(1) { 
-    transform: rotateY(0deg) translateZ(288px); 
+    transform: rotateY(0deg) translateZ(350px); 
 }
 .carousel_cell:nth-child(2) { 
-    transform: rotateY(120deg) translateZ(288px); 
+    transform: rotateY(72deg) translateZ(350px); 
 }
 .carousel_cell:nth-child(3) { 
-    transform: rotateY(240deg) translateZ(288px); 
+    transform: rotateY(144deg) translateZ(350px); 
+}
+.carousel_cell:nth-child(4) { 
+    transform: rotateY(216deg) translateZ(350px); 
+}
+.carousel_cell:nth-child(5) { 
+    transform: rotateY(288deg) translateZ(350px); 
 }
 
 @media (max-width:1024px) {
@@ -132,6 +139,24 @@
         width: 50%;
     }
 }
+
+/* @media (min-width:913px) {
+    .carousel_cell:nth-child(1) { 
+        transform: rotateY(0deg) translateZ(360px); 
+    }
+    .carousel_cell:nth-child(2) { 
+        transform: rotateY(72deg) translateZ(360px); 
+    }
+    .carousel_cell:nth-child(3) { 
+        transform: rotateY(144deg) translateZ(360px); 
+    }
+    .carousel_cell:nth-child(4) { 
+        transform: rotateY(216deg) translateZ(360px); 
+    }
+    .carousel_cell:nth-child(5) { 
+        transform: rotateY(288deg) translateZ(360px); 
+    }
+} */
 
 @media (max-width:911px) {
     .projbox {
@@ -153,7 +178,6 @@
     #prev, #next {
         display: none;
     }
-
     .carousel_cell:nth-child(1) { 
         transform: none;
     }
@@ -161,6 +185,12 @@
         transform: none;
     }
     .carousel_cell:nth-child(3) { 
+        transform: none;
+    }
+    .carousel_cell:nth-child(4) { 
+        transform: none;
+    }
+    .carousel_cell:nth-child(5) { 
         transform: none;
     }
 
