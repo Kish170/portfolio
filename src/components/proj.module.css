@@ -8,7 +8,7 @@
 .projbox {
     position: relative;
     perspective: 1000px;
-    margin: 30% auto;
+    margin: 350px auto;
     width: 100%;
 }
 
@@ -125,10 +125,64 @@
     transform: rotateY(288deg) translateZ(350px); 
 }
 
-@media (max-width:1024px) {
+@media (min-width:1300px) {
     .projbox {
-        margin: 40% auto;
+        margin: 450px auto;
     }
+    .images {
+        height: 25em;
+    }
+    .images > img {
+        height: 20em;
+    }
+    .carousel_cell:nth-child(1) { 
+        transform: rotateY(0deg) translateZ(500px); 
+    }
+    .carousel_cell:nth-child(2) { 
+        transform: rotateY(72deg) translateZ(500px); 
+    }
+    .carousel_cell:nth-child(3) { 
+        transform: rotateY(144deg) translateZ(500px); 
+    }
+    .carousel_cell:nth-child(4) { 
+        transform: rotateY(216deg) translateZ(500px); 
+    }
+    .carousel_cell:nth-child(5) { 
+        transform: rotateY(288deg) translateZ(500px); 
+    }
+}
+
+@media (min-width:1600px) {
+    .images {
+        height: 30em;
+    }
+    .images > img {
+        height: 25em;
+    }
+}
+
+@media (min-width:1900px) {
+    .projbox {
+        margin: 500px auto;
+    }
+    .carousel_cell:nth-child(1) { 
+        transform: rotateY(0deg) translateZ(600px); 
+    }
+    .carousel_cell:nth-child(2) { 
+        transform: rotateY(72deg) translateZ(600px); 
+    }
+    .carousel_cell:nth-child(3) { 
+        transform: rotateY(144deg) translateZ(600px); 
+    }
+    .carousel_cell:nth-child(4) { 
+        transform: rotateY(216deg) translateZ(600px); 
+    }
+    .carousel_cell:nth-child(5) { 
+        transform: rotateY(288deg) translateZ(600px); 
+    }
+}
+
+@media (max-width:1100px) {
     #prev {
         left: 5em;
     }
@@ -140,28 +194,9 @@
     }
 }
 
-/* @media (min-width:913px) {
-    .carousel_cell:nth-child(1) { 
-        transform: rotateY(0deg) translateZ(360px); 
-    }
-    .carousel_cell:nth-child(2) { 
-        transform: rotateY(72deg) translateZ(360px); 
-    }
-    .carousel_cell:nth-child(3) { 
-        transform: rotateY(144deg) translateZ(360px); 
-    }
-    .carousel_cell:nth-child(4) { 
-        transform: rotateY(216deg) translateZ(360px); 
-    }
-    .carousel_cell:nth-child(5) { 
-        transform: rotateY(288deg) translateZ(360px); 
-    }
-} */
-
 @media (max-width:911px) {
     .projbox {
-        margin: 50% auto;
-        margin-bottom: 60%;
+        margin-bottom: 65%;
     }
     #prev {
         left: 3em;
@@ -175,6 +210,12 @@
 }
 
 @media (max-width:767px) {
+    .images {
+        height: 400px;
+    }
+    .images > img {
+        height: 375px;
+    }
     #prev, #next {
         display: none;
     }
@@ -211,9 +252,6 @@
     .projs > * {
         position: relative;
     }
-    
-    
-
 }
 
 
