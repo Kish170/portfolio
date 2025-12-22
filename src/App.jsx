@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar.jsx";
-import About from "./components/About.jsx";
+// import About from "./components/About.jsx";
 import Hero from "./components/Hero.jsx";
 import Edu from "./components/Edu.jsx";
 import Exp from "./components/Exp.jsx";
@@ -26,9 +26,9 @@ function App() {
     <>
       <Navbar refs={refs}/>
       <Hero HeroC={HeroRef}/>
-      <About AboutC={AboutRef}/>
-      <Edu EduC={EduRef}/>
       <Exp ExpC={ExpRef}/>
+      {/* <About AboutC={AboutRef}/> */}
+      <Edu EduC={EduRef}/>
       <Proj ProjC={ProjectRef}/>
       <Foot/>
     </>

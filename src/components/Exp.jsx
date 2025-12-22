@@ -36,32 +36,46 @@ export default function Exp({ExpC}) {
                     <hr></hr>
                 </div>
                 <div className={sti.expb}>
-                    <div className={`background ${sti.exps}`}>
-                        <h2>VICE PRESIDENT OF TECHNOLOGY OF BOOKERIES</h2>
-                        <h3>TIMELINE: 11/2023 - 04/2024</h3>
-                        <ul>
-                            <li>Worked with a team to create a website using Shopify and placed top in Ontario and 3rd in Canada for Best Store Builder of the Year Award</li>
-                            <li>Made alterations to the appearance of the website theme through the source code by adding our own visual elements and creating media queries for them</li>
-                            <li>Managed virtual communication and technology problems that arose in other departments.</li>
-                        </ul>
+                    <div className={`${sti.exps} ${sti.expCard1}`}>
+                        <div className={sti.accentBar}></div>
+                        <div className={sti.cardContent}>
+                            <div className={sti.roleTag}>Data Science</div>
+                            <h2 className={sti.position}>Data Scientist Intern</h2>
+                            <h3 className={sti.company}>theScore</h3>
+                            <div className={sti.techStack}>
+                                <span className={sti.techText}>Python</span>
+                                <span className={sti.techText}>SQL</span>
+                                <span className={sti.techText}>BigQuery</span>
+                                <span className={sti.techText}>scikit-learn</span>
+                            </div>
+                            <div className={sti.details}>
+                                <span className={sti.date}>Sept 2025 - Dec 2025</span>
+                                <span className={sti.separator}>•</span>
+                                <span className={sti.location}>Toronto, ON</span>
+                            </div>
+                            <p className={sti.description}>Built data-driven risk frameworks to identify fraud patterns and optimize marketing efficiency.</p>
+                        </div>
                     </div>
-                    <div  className={`background ${sti.exps}`}>
-                        <h2>YOUR VOICE IS POWER HACKATHON</h2>
-                        <h3>TIMELINE: 11/2022</h3>
-                        <ul>
-                            <li>Worked with a partner to compose music using beats and rhythms provided by the artists who sponsored the event using our programming skills </li>
-                            <li>Secured a position among the top 40 finalists from a pool of hundreds of contestants in the competition.</li>
-                            <li>Worked with EarSketch’s environment using Python to access the multiple rhythms and beats provided to construct a soundtrack of approximately 2 minutes</li>
-                        </ul>
-                    </div>
-                    <div  className={`background ${sti.exps}`}>
-                        <h2>INNOVATENOW HACKATHON</h2>
-                        <h3>TIMELINE: 10/2024</h3>
-                        <ul>
-                            <li>Collaborated with a team to develop, Vitalog, a healthcare solution aimed at empowering providers to track patient vitals more efficiently while educating citizens on proactive self-care.</li>
-                            <li>Designed and built a prototype website using React.js and Chakra UI, creating a responsive and intuitive user interface</li>
-                            <li>Presented the concept to judges, clearly articulating its potential impact on healthcare management and health awareness</li>
-                        </ul>
+                    <div className={`${sti.exps} ${sti.expCard2}`}>
+                        <div className={sti.accentBar}></div>
+                        <div className={sti.cardContent}>
+                            <div className={sti.roleTag}>Software Engineering</div>
+                            <h2 className={sti.position}>Software Engineer Intern</h2>
+                            <h3 className={sti.company}>theScore</h3>
+                            <div className={sti.techStack}>
+                                <span className={sti.techText}>Kotlin</span>
+                                <span className={sti.techText}>Java</span>
+                                <span className={sti.techText}>FastAPI</span>
+                                <span className={sti.techText}>MongoDB</span>
+                                <span className={sti.techText}>Kafka</span>
+                            </div>
+                            <div className={sti.details}>
+                                <span className={sti.date}>May 2025 - Aug 2025</span>
+                                <span className={sti.separator}>•</span>
+                                <span className={sti.location}>Toronto, ON</span>
+                            </div>
+                            <p className={sti.description}>Engineered scalable developer tooling to streamline testing and improve system reliability for millions of users.</p>
+                        </div>
                     </div>
                 </div>
             </div>

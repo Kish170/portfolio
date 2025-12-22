@@ -24,7 +24,10 @@
 }
 
 #name {
-    color:#DA4450;
+    background: linear-gradient(135deg, var(--prime-start), var(--prime-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 @keyframes open {
