@@ -1,0 +1,84 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  sections: { id: string; label: string }[];
+}
+
+const { sections } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container inner">
+    <a class="mark mono" href="/" aria-label="Kishan Rajagunathas, home">kr</a>
+    <nav aria-label="Sections">
+      <ul>
+        {
+          sections.map((s) => (
+            <li>
+              <a href={`#${s.id}`}>{s.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <ThemeToggle />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    height: 3.25rem;
+  }
+
+  .mark {
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  nav {
+    margin-left: auto;
+  }
+
+  ul {
+    display: flex;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 30rem) {
+    ul {
+      gap: var(--space-3);
+    }
+  }
+</style>

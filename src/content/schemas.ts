@@ -96,5 +96,12 @@ export const projectSchema = z
     }
   });
 
+export const skillGroupSchema = z.object({
+  group: z.string().min(1),
+  order: z.number().int(),
+  items: z.array(z.string().min(1)).min(1),
+});
+
 export type Experience = z.infer<typeof experienceSchema>;
 export type Project = z.infer<typeof projectSchema>;
+export type SkillGroup = z.infer<typeof skillGroupSchema>;

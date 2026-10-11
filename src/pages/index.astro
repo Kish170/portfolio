@@ -1,35 +1,36 @@
 ---
-// Placeholder until ticket 05 builds the real sections.
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+import { buildMonth, currentRole, groupByCompany } from '../lib/experience';
+import { site } from '../data/site';
+
+const experience = (await getCollection('experience')).map((e) => e.data);
+const skills = (await getCollection('skills')).map((s) => s.data).sort((a, b) => a.order - b.order);
+
+const work = experience.filter((e) => e.kind !== 'leadership');
+const leadership = experience.filter((e) => e.kind === 'leadership');
+const current = currentRole(experience, buildMonth());
+
+const sections = [
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+];
 ---
 
 <BaseLayout
-  title="Kishan Rajagunathas"
-  description="Kishan Rajagunathas builds data platforms and AI systems. Data Engineering Intern at Clio, co-founder of nAIber."
+  title={`${site.name} | Data and AI engineering`}
+  description={`${site.name} builds data platforms and AI systems. ${current ? `${current.role} at ${current.company}. ` : ''}Co-founder of nAIber.`}
 >
-  <div class="container hero">
-    <p class="label">kishanrajagunathas.ca</p>
-    <h1>Kishan Rajagunathas</h1>
-    <p class="lede">I build data platforms and AI systems.</p>
-    <ThemeToggle />
-  </div>
+  <SiteHeader slot="header" {sections} />
+  <Hero {current} />
+  <ExperienceList id="experience" title="Experience" groups={groupByCompany(work)} />
+  <ExperienceList id="leadership" title="Leadership" groups={groupByCompany(leadership)} />
+  <Skills groups={skills} />
+  <Contact slot="footer" />
 </BaseLayout>
-
-<style>
-  .hero {
-    display: grid;
-    gap: var(--space-4);
-    justify-items: start;
-    padding-block: var(--space-24);
-  }
-
-  h1 {
-    font-size: var(--text-3xl);
-  }
-
-  .lede {
-    font-size: var(--text-xl);
-    color: var(--color-text-muted);
-  }
-</style>

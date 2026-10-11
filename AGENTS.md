@@ -27,6 +27,8 @@ Static Astro + TypeScript (strict) site, deployed to Firebase Hosting
 - Astro 7 auto-backgrounds `astro preview`/`dev` when it detects a coding
   agent. Use `--ignore-lock` for a foreground one-off server (Playwright's
   webServer relies on this).
+- "Current role" in the hero is computed at build time from experience
+  dates. `PORTFOLIO_NOW=YYYY-MM` pins the month (Playwright pins 2026-10).
 - macOS AirPlay owns port 5000, so the Firebase hosting emulator is pinned
   to 5050 in `firebase.json`.
 

@@ -1,0 +1,122 @@
+---
+import { existsSync } from 'node:fs';
+import { site } from '../data/site';
+import type { Experience } from '../content/schemas';
+
+interface Props {
+  current?: Experience;
+}
+
+const { current } = Astro.props;
+// Ticket 09 copies the PDF in before build; until then no dead link.
+const hasResume = existsSync('public/resume.pdf');
+---
+
+<section class="hero container" aria-labelledby="hero-name">
+  {
+    current && (
+      <p class="status mono">
+        <span class="dot" aria-hidden="true" />
+        <span data-testid="current-role">
+          {current.role} at {current.company}
+        </span>
+      </p>
+    )
+  }
+  <h1 id="hero-name">{site.name}</h1>
+  <p class="headline">{site.headline}</p>
+  <p class="intro">{site.intro}</p>
+  <ul class="actions">
+    {
+      hasResume && (
+        <li>
+          <a class="button primary" href="/resume.pdf">
+            Resume
+          </a>
+        </li>
+      )
+    }
+    <li><a class="button" href={site.links.github}>GitHub</a></li>
+    <li><a class="button" href={site.links.linkedin}>LinkedIn</a></li>
+    <li><a class="button" href={`mailto:${site.email}`}>Email</a></li>
+  </ul>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-4);
+    justify-items: start;
+    padding-block: var(--space-24) var(--space-16);
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-text-muted);
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 3px var(--color-accent-soft);
+  }
+
+  h1 {
+    font-size: var(--text-3xl);
+    letter-spacing: -0.02em;
+  }
+
+  .headline {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-tight);
+    font-weight: 500;
+  }
+
+  .intro {
+    max-width: 36rem;
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: var(--space-4) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .button {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-4);
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: border-color var(--duration-fast) var(--ease);
+  }
+
+  .button:hover {
+    border-color: var(--color-text-muted);
+  }
+
+  .button.primary {
+    color: var(--color-accent-contrast);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+</style>

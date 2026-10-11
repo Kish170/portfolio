@@ -22,6 +22,8 @@ export default defineConfig({
     // when it detects a coding agent, which Playwright reads as a crash.
     command: `npm run build && npx astro preview --port ${PORT} --ignore-lock`,
     url: `http://localhost:${PORT}`,
+    // Pin the build month so "current role" assertions do not drift with the calendar.
+    env: { PORTFOLIO_NOW: '2026-10' },
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
   },

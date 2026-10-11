@@ -1,0 +1,26 @@
+# Mirrors the audited resume skill lines (projects/resume/content.tex).
+# Order follows the site's data + AI positioning.
+- id: languages
+  group: Languages
+  order: 1
+  items: [Python, SQL, TypeScript, JavaScript, Java, C, C++]
+- id: data-engineering
+  group: Data Engineering
+  order: 2
+  items: [PySpark, Spark SQL, Databricks, Delta Live Tables, Unity Catalog, dbt, BigQuery, Kafka]
+- id: ml-ai
+  group: ML/AI
+  order: 3
+  items: [PyTorch, scikit-learn, pandas, NumPy, Jupyter, LangChain, LangGraph, RAG, Model Context Protocol (MCP)]
+- id: databases
+  group: Databases
+  order: 4
+  items: [PostgreSQL, Neo4j, MongoDB, Redis, Qdrant]
+- id: cloud-devops
+  group: Cloud & DevOps
+  order: 5
+  items: [AWS, GCP, Terraform, Docker, Datadog, CI/CD, Jenkins]
+- id: backend-web
+  group: Backend & Web
+  order: 6
+  items: [Node.js, Express.js, Next.js, React, WebSockets, BullMQ]
