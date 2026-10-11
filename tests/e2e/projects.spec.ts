@@ -2,7 +2,7 @@ import { expect, newContext, test } from './fixtures';
 
 // Literal oracles from the content files; see home.spec.ts for why.
 const featured = [
-  { id: 'naiber', title: 'nAIber', nodes: 6, edges: 5, status: 'shipped' },
+  { id: 'naiber', title: 'nAIber', nodes: 6, edges: 5, status: 'building', works: 3, planned: 4 },
   { id: 'home-lab', title: 'home-lab', nodes: 6, edges: 5, status: 'building', works: 2, planned: 4 },
   { id: 'internship-watcher', title: 'internship-watcher', nodes: 5, edges: 4, status: 'building', works: 3, planned: 3 },
 ] as const;

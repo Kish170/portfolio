@@ -1,13 +1,18 @@
 ---
 title: nAIber
 tagline: AI voice companion that phones elderly people and remembers their conversations.
-status: shipped
+status: building
 order: 1
 problem: Loneliness in older adults is common, and scripted check-in calls feel robotic. nAIber holds real, open-ended phone conversations that build on what someone said last time.
-results:
-  - About 800 ms voice response latency over a live phone call.
-  - Conversations adapt to earlier turns and past calls via an event-sourced dialogue engine.
-  - Relationship-aware recall from a combined vector and graph memory.
+worksToday:
+  - Real-time phone calls streaming audio between Twilio and ElevenLabs over WebSockets, with about 800 ms response latency.
+  - Event-sourced dialogue engine on Redis that adapts to earlier turns and past calls.
+  - Post-call memory pipeline writing facts to Qdrant and Neo4j, recalled with relationship-aware RAG.
+planned:
+  - Pilot with first users.
+  - Automated end-to-end call tests and agent evals as a regression suite.
+  - Configuration and infrastructure as code.
+  - Security hardening before calls run on a public number.
 stack: [TypeScript, Node.js, WebSockets, Twilio, ElevenLabs, Redis, LangGraph, Neo4j, Qdrant]
 diagram:
   nodes:
