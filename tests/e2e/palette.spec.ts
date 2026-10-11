@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 // 5 sections + 4 projects + copy email, GitHub, LinkedIn, toggle theme (+ resume once ticket 09 lands).
 const EXPECTED_COUNT = 13 + (existsSync('public/resume.pdf') ? 1 : 0);

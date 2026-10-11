@@ -3,15 +3,29 @@ import '@fontsource-variable/ibm-plex-sans';
 import '@fontsource/ibm-plex-mono/400.css';
 import '@fontsource/ibm-plex-mono/500.css';
 import '../styles/global.css';
+import { site } from '../data/site';
 
 interface Props {
   title: string;
   description: string;
   noindex?: boolean;
+  /** Site-relative path of this page's 1200x630 preview image. */
+  ogImage?: string;
+  ogImageAlt?: string;
+  /** Structured data object, serialised into a JSON-LD script. */
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, noindex = false } = Astro.props;
+const {
+  title,
+  description,
+  noindex = false,
+  ogImage = '/og/home.png',
+  ogImageAlt = `${site.name}: ${site.headline}`,
+  jsonLd,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -23,8 +37,41 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f6f3" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0e11" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {
+      // Production only, so local dev never records visits.
+      import.meta.env.PROD && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${site.gaMeasurementId}`} />
+          <script is:inline define:vars={{ id: site.gaMeasurementId }}>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', id);
+          </script>
+        </>
+      )
+    }
     <!--
       Runs before paint so a stored theme never flashes the wrong palette.
       Only an explicit choice is stored; with none, CSS follows the system.

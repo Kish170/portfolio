@@ -29,7 +29,12 @@ const sections = [
 ].map((s) => ({ ...s, href: s.id === 'contact' ? '#contact' : `/#${s.id}` }));
 ---
 
-<BaseLayout title={`${data.title} | ${site.name}`} description={data.tagline}>
+<BaseLayout
+  title={`${data.title} | ${site.name}`}
+  description={data.tagline}
+  ogImage={`/og/${project.id}.png`}
+  ogImageAlt={`${data.title}: ${data.tagline}`}
+>
   <SiteHeader slot="header" {sections} />
   <article class="container page">
     <a class="back mono" href="/#projects">All projects</a>

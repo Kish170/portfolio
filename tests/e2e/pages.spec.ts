@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
-import { expect, test } from '@playwright/test';
+import { expect, test } from './fixtures';
 
 const pages = ['/', '/styleguide', '/projects/naiber/', '/projects/home-lab/', '/projects/internship-watcher/'];
 

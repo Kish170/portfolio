@@ -24,6 +24,12 @@ Static Astro + TypeScript (strict) site, deployed to Firebase Hosting
 
 ## Gotchas
 
+- E2E specs import `test`/`expect` from `tests/e2e/fixtures.ts`, not
+  `@playwright/test`: the fixture intercepts GA so test runs never send
+  real analytics hits. Use its `newContext(browser, opts)` for manual contexts.
+- Preview images and icons are generated at build time (`src/lib/og.ts`,
+  Satori + resvg). Satori cannot read woff2, so they use Plex Mono (.woff).
+
 - Astro 7 auto-backgrounds `astro preview`/`dev` when it detects a coding
   agent. Use `--ignore-lock` for a foreground one-off server (Playwright's
   webServer relies on this).

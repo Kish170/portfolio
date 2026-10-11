@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, newContext, test } from './fixtures';
 
 // Literal oracles from the content files; see home.spec.ts for why.
 const featured = [
@@ -74,7 +74,7 @@ for (const p of featured) {
     });
 
     test('lists components with roles without JavaScript', async ({ browser }) => {
-      const context = await browser.newContext({ javaScriptEnabled: false });
+      const context = await newContext(browser, { javaScriptEnabled: false });
       const page = await context.newPage();
       await page.goto(`/projects/${p.id}/`);
       await expect(page.locator('[data-section="components"] dt')).toHaveCount(p.nodes);
@@ -122,7 +122,7 @@ test.describe('diagram interaction', () => {
 
 test.describe('responsive diagram', () => {
   test('uses the vertical layout on narrow screens', async ({ browser }) => {
-    const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
+    const context = await newContext(browser, { viewport: { width: 375, height: 812 } });
     const page = await context.newPage();
     await page.goto('/projects/naiber/');
     await expect(page.locator('[data-diagram] svg[data-orientation="vertical"]').first()).toBeVisible();
@@ -133,7 +133,7 @@ test.describe('responsive diagram', () => {
   });
 
   test('uses the horizontal layout on wide screens', async ({ browser }) => {
-    const context = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+    const context = await newContext(browser, { viewport: { width: 1280, height: 900 } });
     const page = await context.newPage();
     await page.goto('/projects/naiber/');
     await expect(page.locator('[data-diagram] svg[data-orientation="horizontal"]').first()).toBeVisible();

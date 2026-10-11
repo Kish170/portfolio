@@ -18,6 +18,22 @@ const work = experience.filter((e) => e.kind !== 'leadership');
 const leadership = experience.filter((e) => e.kind === 'leadership');
 const current = currentRole(experience, buildMonth());
 
+// Structured data for search engines; mirrors what the page shows.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: new URL('/', Astro.site).href,
+  description: site.headline,
+  ...(current && {
+    jobTitle: current.role,
+    worksFor: { '@type': 'Organization', name: current.company, ...(current.url && { url: current.url }) },
+  }),
+  affiliation: { '@type': 'CollegeOrUniversity', name: site.education.school },
+  sameAs: [site.links.github, site.links.linkedin],
+  knowsAbout: ['Data engineering', 'Machine learning', 'PySpark', 'Databricks', 'TypeScript', 'Python'],
+};
+
 const sections = [
   { id: 'experience', label: 'Experience' },
   { id: 'projects', label: 'Projects' },
@@ -29,6 +45,7 @@ const sections = [
 <BaseLayout
   title={`${site.name} | Data and AI engineering`}
   description={`${site.name} builds data platforms and AI systems. ${current ? `${current.role} at ${current.company}. ` : ''}Co-founder of nAIber.`}
+  {jsonLd}
 >
   <SiteHeader slot="header" {sections} />
   <Hero {current} />

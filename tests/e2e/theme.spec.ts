@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './fixtures';
 
 const bg = (page: Page) => page.evaluate(() => getComputedStyle(document.body).backgroundColor);
 const LIGHT_BG = 'rgb(246, 246, 243)';

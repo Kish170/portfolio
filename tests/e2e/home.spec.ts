@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs';
-import { expect, test } from '@playwright/test';
+import { expect, newContext, test } from './fixtures';
 
 // Oracles are literal values on purpose: importing them from site config
 // would let a wrong config value pass its own test.
@@ -119,7 +119,7 @@ test('every nav link targets a section that exists', async ({ page }) => {
 });
 
 test('content is readable without JavaScript', async ({ browser }) => {
-  const context = await browser.newContext({ javaScriptEnabled: false });
+  const context = await newContext(browser, { javaScriptEnabled: false });
   const page = await context.newPage();
   await page.goto('/');
   await expect(page.locator('h1')).toHaveText('Kishan Rajagunathas');
@@ -129,7 +129,7 @@ test('content is readable without JavaScript', async ({ browser }) => {
 });
 
 test('no horizontal scroll at 375px', async ({ browser }) => {
-  const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
+  const context = await newContext(browser, { viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto('/');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
@@ -138,7 +138,7 @@ test('no horizontal scroll at 375px', async ({ browser }) => {
 });
 
 test('header controls stay on one line at 375px', async ({ browser }) => {
-  const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
+  const context = await newContext(browser, { viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto('/');
   const toggle = page.getByRole('banner').locator('[data-theme-toggle]');

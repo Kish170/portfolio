@@ -7,6 +7,7 @@ export const site = {
   intro:
     'Computer Science student at Carleton University working across data engineering, machine learning, and backend systems.',
   email: 'kishanrajagunathas@gmail.com',
+  gaMeasurementId: 'G-F92V5PS9P7',
   links: {
     github: 'https://github.com/Kish170',
     linkedin: 'https://www.linkedin.com/in/kishanrajagunathas',
