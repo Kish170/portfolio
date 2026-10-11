@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import CommandPalette from './CommandPalette.astro';
 
 interface Props {
   /** href defaults to an in-page anchor; other pages point back at the home page. */
@@ -23,9 +24,13 @@ const { sections } = Astro.props;
         }
       </ul>
     </nav>
+    <button type="button" class="palette-button mono" aria-label="Open command palette" data-palette-open>
+      <kbd data-shortcut-label>⌘K</kbd>
+    </button>
     <ThemeToggle />
   </div>
 </header>
+<CommandPalette />
 
 <style>
   .site-header {
@@ -77,6 +82,34 @@ const { sections } = Astro.props;
     color: var(--color-text);
   }
 
+  .palette-button {
+    display: none;
+    font: inherit;
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+
+  .palette-button kbd {
+    font: inherit;
+  }
+
+  .palette-button:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+  }
+
+  /* Keyboard shortcuts only help where there is a keyboard. */
+  @media (min-width: 48rem) {
+    .palette-button {
+      display: inline-block;
+    }
+  }
+
   /* Phones: four section links + toggle only fit without the home mark.
      Section links already lead home, and detail pages link back to projects. */
   @media (max-width: 30rem) {
@@ -97,3 +130,11 @@ const { sections } = Astro.props;
     }
   }
 </style>
+
+<script>
+  // Show the platform's modifier; the shortcut accepts both either way.
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
+  if (!isMac) {
+    document.querySelectorAll('[data-shortcut-label]').forEach((el) => (el.textContent = 'Ctrl K'));
+  }
+</script>
