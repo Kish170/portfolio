@@ -47,6 +47,16 @@ test('styleguide is noindex, home is indexable', async ({ page }) => {
   await expect(page.locator('meta[name="robots"]')).toHaveCount(0);
 });
 
+test('all content entries load through the collections', async ({ page }) => {
+  await page.goto('/styleguide');
+  for (const id of ['clio', 'naiber', 'thescore-ds', 'thescore-swe', 'blueprint']) {
+    await expect(page.locator(`[data-entry="experience/${id}"]`)).toHaveCount(1);
+  }
+  for (const id of ['naiber', 'home-lab', 'internship-watcher', 'web-crawler']) {
+    await expect(page.locator(`[data-entry="projects/${id}"]`)).toHaveCount(1);
+  }
+});
+
 test('unknown paths return 404', async ({ page }) => {
   const res = await page.goto('/does-not-exist');
   expect(res?.status()).toBe(404);

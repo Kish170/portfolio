@@ -16,9 +16,9 @@ Static Astro + TypeScript (strict) site, deployed to Firebase Hosting
   manage with `astro dev stop|status|logs`)
 - `npm run build` - static build to `dist/`
 - `npm run check` - type check (`astro check`)
-- `npm test` - Playwright e2e against the production build, desktop +
-  mobile, incl. axe WCAG AA in light and dark
-- `/styleguide` - noindex review page for design tokens
+- `npm test` - Vitest (content schemas) then Playwright e2e against the
+  production build, desktop + mobile, incl. axe WCAG AA in light and dark
+- `/styleguide` - noindex review page for tokens and all content entries
 - `firebase hosting:channel:deploy preview` - preview deploy
 - `firebase deploy --only hosting` - production deploy (only when asked)
 

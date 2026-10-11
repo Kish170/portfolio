@@ -1,0 +1,13 @@
+company: theScore
+role: Data Scientist Intern
+location: Toronto, ON
+start: 2025-09
+end: 2025-12
+kind: work
+summary: Early risk segmentation for promotional bonus eligibility.
+highlights:
+  - Built a Python and SQL ETL workflow on BigQuery that turned raw betting data into inputs for the risk-segmentation model behind bonus eligibility.
+  - Engineered 20+ behavioural signals from 500K+ betting transactions to flag promotion-dependent users within their first week.
+  - Improved early detection of high-risk users by 10% over the heuristic baseline using K-Means clustering in scikit-learn, validated against long-term risk scores.
+stack: [Python, SQL, BigQuery, scikit-learn]
+url: https://www.thescore.com

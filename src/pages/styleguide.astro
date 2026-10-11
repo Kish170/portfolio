@@ -1,8 +1,12 @@
 ---
-// Internal review page for design tokens (noindex). Remove or keep at
-// ticket 10.
+// Internal review page for design tokens and content (noindex). Remove or
+// keep at ticket 10.
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+
+const experience = (await getCollection('experience')).sort((a, b) => b.data.start.localeCompare(a.data.start));
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
 
 const colors = [
   'bg',
@@ -17,7 +21,7 @@ const colors = [
 const sizes = ['3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
 ---
 
-<BaseLayout title="Styleguide" description="Design tokens review." noindex>
+<BaseLayout title="Styleguide" description="Design tokens and content review." noindex>
   <div class="container stack">
     <header class="row">
       <h1>Styleguide</h1>
@@ -43,6 +47,60 @@ const sizes = ['3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
       {sizes.map((s) => <p style={`font-size: var(--text-${s})`}>text-{s}: Data platforms and AI systems</p>)}
       <p class="mono">Mono: 800 ms latency, 14% to 100% coverage</p>
       <p><a href="#type">Link style</a> <span class="badge">Building</span></p>
+    </section>
+
+    <section aria-labelledby="exp">
+      <h2 id="exp" class="label">Experience ({experience.length})</h2>
+      {
+        experience.map(({ id, data }) => (
+          <article class="card" data-entry={`experience/${id}`}>
+            <p class="label">
+              {data.start} to {data.end} · {data.kind}
+            </p>
+            <h3>
+              {data.role}, {data.company}
+            </h3>
+            <p>{data.summary}</p>
+            <ul>
+              {data.highlights.map((h) => (
+                <li>{h}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </section>
+
+    <section aria-labelledby="proj">
+      <h2 id="proj" class="label">Projects ({projects.length})</h2>
+      {
+        projects.map(({ id, data }) => (
+          <article class="card" data-entry={`projects/${id}`}>
+            <p class="label">
+              {data.status} · {data.stack.join(', ')}
+            </p>
+            <h3>{data.title}</h3>
+            <p>{data.tagline}</p>
+            {data.worksToday.length > 0 && (
+              <>
+                <p class="label">Works today</p>
+                <ul>
+                  {data.worksToday.map((w) => (
+                    <li>{w}</li>
+                  ))}
+                </ul>
+                <p class="label">Planned</p>
+                <ul>
+                  {data.planned.map((w) => (
+                    <li>{w}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+            {data.diagram && <p class="mono">diagram: {data.diagram.nodes.map((n) => n.label).join(' / ')}</p>}
+          </article>
+        ))
+      }
     </section>
   </div>
 </BaseLayout>
@@ -83,6 +141,20 @@ const sizes = ['3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
     height: 3rem;
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius);
+  }
+
+  .card {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .card ul {
+    margin: 0;
+    padding-left: var(--space-6);
   }
 
   .badge {

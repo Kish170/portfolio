@@ -1,0 +1,13 @@
+company: Clio
+role: Data Engineering Intern
+location: Toronto, ON
+start: 2026-05
+end: 2026-12
+kind: work
+summary: Production data pipelines and observability for the data platform.
+highlights:
+  - Build and maintain Databricks Delta Live Tables pipelines in PySpark that bring third-party vendor data through a medallion architecture into analytics-ready tables for insights, ML, and analyst teams.
+  - Raised observability coverage from 14% to 100% across 7 services by defining Datadog alerting standards and writing reusable Claude Code skills that manage monitors and dashboards in Terraform.
+  - Provisioned a restricted Databricks workspace in Terraform for PII-sensitive data, with Unity Catalog permissions, service-principal auth, and automated dbt credential rotation.
+stack: [PySpark, Databricks, Delta Live Tables, Unity Catalog, Terraform, Datadog, dbt]
+url: https://www.clio.com
