@@ -1,0 +1,12 @@
+company: theScore
+role: Software Engineer Intern
+location: Toronto, ON
+start: 2025-05
+end: 2025-08
+kind: work
+summary: Automated validation in CI/CD for model releases and event flows.
+highlights:
+  - Cut model deployment validation from 2 days to 1 hour by integrating a FastAPI service into the CI/CD pipeline, automating accuracy, latency, and consistency checks before every release.
+  - Extended CI/CD validation with end-to-end checks of the account-linking event flow, driving synthetic events through REST APIs and Kafka and reconciling them against MongoDB profiles.
+stack: [CI/CD, Kafka, MongoDB, REST APIs]
+url: https://www.thescore.com

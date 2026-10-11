@@ -1,0 +1,65 @@
+<button type="button" class="theme-toggle" data-theme-toggle>
+  <span class="mono"><span data-theme-label>theme</span><span class="suffix"> mode</span></span>
+</button>
+
+<style>
+  .theme-toggle {
+    font: inherit;
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
+  }
+
+  /* Narrow headers drop " mode"; the accessible name keeps the full phrase. */
+  @media (max-width: 30rem) {
+    .suffix {
+      display: none;
+    }
+  }
+
+  .theme-toggle:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+  }
+</style>
+
+<script>
+  // Exported on window so the command palette (ticket 07) can reuse it.
+  function currentTheme(): 'light' | 'dark' {
+    const explicit = document.documentElement.dataset.theme;
+    if (explicit === 'light' || explicit === 'dark') return explicit;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function render() {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.querySelectorAll<HTMLElement>('[data-theme-label]').forEach((el) => {
+      el.textContent = next;
+      // Accessible name must contain the visible text (WCAG 2.5.3).
+      el.closest('button')?.setAttribute('aria-label', `Switch to ${next} mode`);
+    });
+  }
+
+  function toggleTheme() {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+    render();
+  }
+
+  (window as Window & { toggleTheme?: () => void }).toggleTheme = toggleTheme;
+
+  document.querySelectorAll('[data-theme-toggle]').forEach((btn) => {
+    btn.addEventListener('click', toggleTheme);
+  });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+  render();
+</script>

@@ -1,0 +1,259 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/SiteHeader.astro';
+import Contact from '../../components/Contact.astro';
+import Diagram from '../../components/Diagram.astro';
+import StatusBadge from '../../components/StatusBadge.astro';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+
+const sections = [
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+].map((s) => ({ ...s, href: s.id === 'contact' ? '#contact' : `/#${s.id}` }));
+---
+
+<BaseLayout
+  title={`${data.title} | ${site.name}`}
+  description={data.tagline}
+  ogImage={`/og/${project.id}.png`}
+  ogImageAlt={`${data.title}: ${data.tagline}`}
+>
+  <SiteHeader slot="header" {sections} />
+  <article class="container page">
+    <a class="back mono" href="/#projects">All projects</a>
+
+    <header class="head">
+      <div class="title-row">
+        <h1>{data.title}</h1>
+        <StatusBadge status={data.status} />
+      </div>
+      <p class="tagline">{data.tagline}</p>
+    </header>
+
+    <section data-section="problem" aria-labelledby="problem-title">
+      <h2 id="problem-title" class="label">Problem</h2>
+      <p class="lead">{data.problem}</p>
+    </section>
+
+    <section aria-labelledby="arch-title">
+      <h2 id="arch-title" class="label">Architecture</h2>
+      <Diagram diagram={data.diagram} id={`page-${project.id}`} title={data.title} />
+    </section>
+
+    {
+      data.results.length > 0 && (
+        <section data-section="results" aria-labelledby="results-title">
+          <h2 id="results-title" class="label">Results</h2>
+          <ul class="list">
+            {data.results.map((r) => (
+              <li>{r}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    {
+      data.status === 'building' && (
+        <div class="split">
+          <section data-section="works-today" aria-labelledby="works-title">
+            <h2 id="works-title" class="label">Works today</h2>
+            <ul class="list">
+              {data.worksToday.map((w) => (
+                <li>{w}</li>
+              ))}
+            </ul>
+          </section>
+          <section data-section="planned" aria-labelledby="planned-title">
+            <h2 id="planned-title" class="label">Planned</h2>
+            <ul class="list planned">
+              {data.planned.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      )
+    }
+
+    <section data-section="components" aria-labelledby="components-title">
+      <h2 id="components-title" class="label">Components</h2>
+      <dl class="components">
+        {data.diagram.nodes.map((n) => (
+          <div>
+            <dt class="mono">{n.label}</dt>
+            <dd>{n.role}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <section data-section="stack" aria-labelledby="stack-title">
+      <h2 id="stack-title" class="label">Stack</h2>
+      <ul class="stack">
+        {data.stack.map((t) => <li>{t}</li>)}
+      </ul>
+    </section>
+
+    {
+      (data.links.repo || data.links.live) && (
+        <section aria-labelledby="links-title">
+          <h2 id="links-title" class="label">Links</h2>
+          <ul class="list">
+            {data.links.repo && (
+              <li>
+                <a href={data.links.repo}>Source code</a>
+              </li>
+            )}
+            {data.links.live && (
+              <li>
+                <a href={data.links.live}>Live site</a>
+              </li>
+            )}
+          </ul>
+        </section>
+      )
+    }
+
+    <div class="body">
+      <Content />
+    </div>
+  </article>
+  <Contact slot="footer" />
+</BaseLayout>
+
+<style>
+  .page {
+    display: grid;
+    gap: var(--space-12);
+    padding-block: var(--space-12);
+  }
+
+  .page > section,
+  .split > section {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .back {
+    font-size: var(--text-sm);
+  }
+
+  .head {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  h1 {
+    font-size: var(--text-3xl);
+    letter-spacing: -0.02em;
+  }
+
+  .tagline {
+    font-size: var(--text-xl);
+    color: var(--color-text-muted);
+  }
+
+  .lead {
+    max-width: 44rem;
+    font-size: var(--text-lg);
+  }
+
+  .list {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding-left: var(--space-4);
+  }
+
+  .list li::marker {
+    color: var(--color-accent);
+  }
+
+  .planned li::marker {
+    color: var(--color-building);
+  }
+
+  .split {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  @media (min-width: 48rem) {
+    .split {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .components {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+  }
+
+  @media (min-width: 48rem) {
+    .components {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  dt {
+    font-size: var(--text-sm);
+    color: var(--color-accent);
+  }
+
+  dd {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stack li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0 var(--space-2);
+    color: var(--color-text-muted);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .body {
+    max-width: 44rem;
+    color: var(--color-text-muted);
+  }
+
+  .body:empty {
+    display: none;
+  }
+</style>

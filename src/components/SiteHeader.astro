@@ -1,0 +1,140 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import CommandPalette from './CommandPalette.astro';
+
+interface Props {
+  /** href defaults to an in-page anchor; other pages point back at the home page. */
+  sections: { id: string; label: string; href?: string }[];
+}
+
+const { sections } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container inner">
+    <a class="mark mono" href="/" aria-label="Kishan Rajagunathas, home">kr</a>
+    <nav aria-label="Sections">
+      <ul>
+        {
+          sections.map((s) => (
+            <li>
+              <a href={s.href ?? `#${s.id}`}>{s.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <button type="button" class="palette-button mono" aria-label="Open command palette" data-palette-open>
+      <kbd data-shortcut-label>⌘K</kbd>
+    </button>
+    <ThemeToggle />
+  </div>
+</header>
+<CommandPalette />
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    height: 3.25rem;
+  }
+
+  .mark {
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: var(--space-1) var(--space-2);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  nav {
+    margin-left: auto;
+  }
+
+  ul {
+    display: flex;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  nav a {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-text-muted);
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--color-text);
+  }
+
+  .palette-button {
+    display: none;
+    font: inherit;
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+
+  .palette-button kbd {
+    font: inherit;
+  }
+
+  .palette-button:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+  }
+
+  /* Keyboard shortcuts only help where there is a keyboard. */
+  @media (min-width: 48rem) {
+    .palette-button {
+      display: inline-block;
+    }
+  }
+
+  /* Phones: four section links + toggle only fit without the home mark.
+     Section links already lead home, and detail pages link back to projects. */
+  @media (max-width: 30rem) {
+    .mark {
+      display: none;
+    }
+
+    nav {
+      margin-left: 0;
+    }
+
+    ul {
+      gap: var(--space-3);
+    }
+
+    .inner {
+      justify-content: space-between;
+    }
+  }
+</style>
+
+<script>
+  // Show the platform's modifier; the shortcut accepts both either way.
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
+  if (!isMac) {
+    document.querySelectorAll('[data-shortcut-label]').forEach((el) => (el.textContent = 'Ctrl K'));
+  }
+</script>

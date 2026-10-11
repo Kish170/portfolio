@@ -1,0 +1,293 @@
+---
+import { existsSync } from 'node:fs';
+import { getCollection } from 'astro:content';
+import { site } from '../data/site';
+import type { Command } from '../lib/commands';
+
+// Section links always target the home page so they work from any page.
+const sections: Command[] = [
+  { id: 'experience', label: 'Experience', keywords: 'work jobs internships clio thescore naiber' },
+  { id: 'projects', label: 'Projects', keywords: 'portfolio builds' },
+  { id: 'leadership', label: 'Leadership', keywords: 'blueprint nonprofit' },
+  { id: 'skills', label: 'Skills', keywords: 'stack languages tools' },
+  { id: 'contact', label: 'Contact', keywords: 'email hire education' },
+].map((s) => ({ ...s, group: 'Sections', action: 'navigate', href: `/#${s.id}` }) satisfies Command);
+
+const projects: Command[] = (await getCollection('projects'))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ id, data }) => ({
+    id: `project-${id}`,
+    label: data.title,
+    keywords: `${data.tagline} ${data.stack.join(' ')}`,
+    group: 'Projects',
+    action: 'navigate',
+    href: `/projects/${id}/`,
+  }));
+
+const actions: Command[] = [
+  ...(existsSync('public/resume.pdf')
+    ? [{ id: 'resume', label: 'Open resume', keywords: 'cv pdf', group: 'Actions', action: 'navigate', href: '/resume.pdf' } as const]
+    : []),
+  { id: 'copy-email', label: 'Copy email', keywords: `contact ${site.email}`, group: 'Actions', action: 'copy', value: site.email },
+  { id: 'github', label: 'Open GitHub', keywords: 'code repos source', group: 'Actions', action: 'external', href: site.links.github },
+  { id: 'linkedin', label: 'Open LinkedIn', keywords: 'profile network', group: 'Actions', action: 'external', href: site.links.linkedin },
+  { id: 'theme', label: 'Toggle theme', keywords: 'dark light mode colour color', group: 'Actions', action: 'theme' },
+];
+
+const commands = [...sections, ...projects, ...actions];
+---
+
+<dialog class="palette" aria-label="Command palette" data-palette>
+  <div class="search">
+    <span class="prompt mono" aria-hidden="true">&gt;</span>
+    <input
+      type="text"
+      role="combobox"
+      aria-expanded="true"
+      aria-controls="palette-list"
+      aria-autocomplete="list"
+      aria-label="Search commands"
+      placeholder="Jump to a section, project, or action"
+      autocomplete="off"
+      spellcheck="false"
+      data-palette-input
+    />
+    <kbd class="esc mono">esc</kbd>
+  </div>
+  <ul id="palette-list" role="listbox" aria-label="Commands" data-palette-list>
+    {
+      commands.map((c) => (
+        <li
+          id={`cmd-${c.id}`}
+          role="option"
+          aria-selected="false"
+          data-id={c.id}
+          data-label={c.label}
+          data-keywords={c.keywords}
+          data-action={c.action}
+          data-href={c.href}
+          data-value={c.value}
+        >
+          <span class="group mono">{c.group}</span>
+          <span class="name">{c.label}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <p class="empty" data-palette-empty hidden>No results</p>
+  <p class="status mono" role="status" data-palette-status></p>
+</dialog>
+
+<style>
+  .palette {
+    width: min(36rem, calc(100vw - 2 * var(--gutter)));
+    max-height: min(28rem, 80vh);
+    margin: 12vh auto auto;
+    padding: 0;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: calc(var(--radius) * 2);
+    box-shadow: 0 24px 48px rgb(0 0 0 / 0.25);
+    overflow: hidden;
+  }
+
+  .palette[open] {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .palette::backdrop {
+    background: rgb(0 0 0 / 0.4);
+    backdrop-filter: blur(2px);
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .prompt {
+    color: var(--color-accent);
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    color: inherit;
+    background: transparent;
+    border: 0;
+    outline: none;
+  }
+
+  input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .esc {
+    font-size: var(--text-xs);
+    padding: 0 var(--space-2);
+    color: var(--color-text-muted);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  ul {
+    margin: 0;
+    padding: var(--space-2);
+    list-style: none;
+    overflow-y: auto;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius);
+    cursor: pointer;
+  }
+
+  /* display: flex above would otherwise override the hidden attribute. */
+  li[hidden] {
+    display: none;
+  }
+
+  li[aria-selected='true'] {
+    background: var(--color-accent-soft);
+  }
+
+  li[aria-selected='true'] .name {
+    color: var(--color-text);
+  }
+
+  .group {
+    flex: none;
+    width: 5.5rem;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .empty,
+  .status {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .status:empty {
+    display: none;
+  }
+</style>
+
+<script>
+  import { filterCommands } from '../lib/commands';
+
+  const dialog = document.querySelector<HTMLDialogElement>('[data-palette]')!;
+  const input = dialog.querySelector<HTMLInputElement>('[data-palette-input]')!;
+  const list = dialog.querySelector<HTMLUListElement>('[data-palette-list]')!;
+  const empty = dialog.querySelector<HTMLElement>('[data-palette-empty]')!;
+  const status = dialog.querySelector<HTMLElement>('[data-palette-status]')!;
+  const items = [...list.querySelectorAll<HTMLLIElement>('[role="option"]')];
+  const matchable = items.map((el) => ({ id: el.id, label: el.dataset.label!, keywords: el.dataset.keywords!, el }));
+
+  let visible: HTMLLIElement[] = items;
+  let active = 0;
+
+  function setActive(index: number) {
+    if (visible.length === 0) {
+      input.removeAttribute('aria-activedescendant');
+      return;
+    }
+    active = (index + visible.length) % visible.length;
+    visible.forEach((el, i) => el.setAttribute('aria-selected', String(i === active)));
+    const current = visible[active]!;
+    input.setAttribute('aria-activedescendant', current.id);
+    current.scrollIntoView({ block: 'nearest' });
+  }
+
+  function render() {
+    const matches = filterCommands(matchable, input.value);
+    visible = matches.map((m) => m.el);
+    // Re-append in ranked order; hide the rest.
+    for (const el of items) el.hidden = true;
+    for (const el of visible) {
+      el.hidden = false;
+      el.setAttribute('aria-selected', 'false');
+      list.append(el);
+    }
+    empty.hidden = visible.length > 0;
+    setActive(0);
+  }
+
+  function open() {
+    input.value = '';
+    status.textContent = '';
+    render();
+    dialog.showModal(); // Native modal: page behind is inert, Esc closes, focus restores on close.
+    input.focus();
+  }
+
+  async function run(el: HTMLLIElement) {
+    const { action, href, value } = el.dataset;
+    if (action === 'copy' && value) {
+      try {
+        await navigator.clipboard.writeText(value);
+        status.textContent = `Copied ${value}`;
+      } catch {
+        status.textContent = `Copy failed. Email: ${value}`;
+      }
+      return; // Stay open so the confirmation is seen.
+    }
+    dialog.close();
+    if (action === 'theme') {
+      (window as Window & { toggleTheme?: () => void }).toggleTheme?.();
+    } else if (action === 'external' && href) {
+      window.open(href, '_blank', 'noopener');
+    } else if (href) {
+      window.location.assign(href);
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'k' && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault();
+      if (dialog.open) dialog.close();
+      else open();
+    }
+  });
+
+  input.addEventListener('input', render);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setActive(active + 1);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setActive(active - 1);
+    } else if (e.key === 'Enter' && visible[active]) {
+      e.preventDefault();
+      run(visible[active]!);
+    }
+  });
+
+  list.addEventListener('click', (e) => {
+    const el = (e.target as HTMLElement).closest<HTMLLIElement>('[role="option"]');
+    if (el) run(el);
+  });
+  list.addEventListener('pointermove', (e) => {
+    const el = (e.target as HTMLElement).closest<HTMLLIElement>('[role="option"]');
+    if (el && visible.indexOf(el) !== active) setActive(visible.indexOf(el));
+  });
+
+  // Click on the backdrop (outside the dialog box) closes it.
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+
+  document.querySelectorAll('[data-palette-open]').forEach((btn) => btn.addEventListener('click', open));
+</script>

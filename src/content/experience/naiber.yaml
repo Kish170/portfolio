@@ -1,0 +1,12 @@
+company: nAIber
+role: Co-founder & Lead Engineer
+location: Ottawa, ON
+start: 2025-12
+end: present
+kind: founder
+summary: AI voice companion that calls elderly people for natural, ongoing conversation.
+highlights:
+  - Architected a TypeScript and Node.js microservices monorepo that streams bidirectional audio between Twilio and ElevenLabs over WebSockets with about 800 ms response latency.
+  - Redesigned the dialogue engine from scripted Q&A into an event-sourced architecture on Redis, so conversations adapt to what was said earlier in the call and in past calls.
+  - Built a memory layer where a LangGraph post-call pipeline writes facts to a vector database and a Neo4j knowledge graph, and RAG ranks them by fused similarity and graph scores.
+stack: [TypeScript, Node.js, WebSockets, Redis, LangGraph, Neo4j, Qdrant]

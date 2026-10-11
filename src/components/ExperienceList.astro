@@ -1,0 +1,140 @@
+---
+import { formatMonth, type CompanyGroup } from '../lib/experience';
+
+interface Props {
+  id: string;
+  title: string;
+  groups: CompanyGroup[];
+}
+
+const { id, title, groups } = Astro.props;
+---
+
+<section {id} class="container section" aria-labelledby={`${id}-title`}>
+  <h2 id={`${id}-title`} class="label">{title}</h2>
+  <ol class="timeline">
+    {
+      groups.map(({ company, roles }) => (
+        <li class="company" data-company={company}>
+          <h3 class="company-name">{company}</h3>
+          {roles.map((r) => (
+            <article class="role" data-role={r.role}>
+              <div class="meta mono">
+                <span data-range>
+                  <time datetime={r.start}>{formatMonth(r.start)}</time> -{' '}
+                  {r.end === 'present' ? 'Present' : <time datetime={r.end}>{formatMonth(r.end)}</time>}
+                </span>
+                <span>{r.location}</span>
+              </div>
+              <div class="body">
+                <h4>{r.role}</h4>
+                <p class="summary">{r.summary}</p>
+                <ul class="highlights">
+                  {r.highlights.map((h) => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+                {r.stack.length > 0 && (
+                  <ul class="stack" aria-label="Tech used">
+                    {r.stack.map((t) => (
+                      <li>{t}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </article>
+          ))}
+        </li>
+      ))
+    }
+  </ol>
+</section>
+
+<style>
+  .section {
+    display: grid;
+    gap: var(--space-8);
+    padding-block: var(--space-12);
+  }
+
+  .timeline {
+    display: grid;
+    gap: var(--space-12);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .company {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .company-name {
+    font-size: var(--text-xl);
+  }
+
+  .role {
+    display: grid;
+    gap: var(--space-2) var(--space-8);
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-border);
+  }
+
+  @media (min-width: 48rem) {
+    .role {
+      grid-template-columns: 11rem 1fr;
+    }
+  }
+
+  .meta {
+    display: grid;
+    align-content: start;
+    gap: var(--space-1);
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-mono);
+    color: var(--color-text-muted);
+  }
+
+  .body {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  h4 {
+    font-size: var(--text-lg);
+  }
+
+  .summary {
+    color: var(--color-text-muted);
+  }
+
+  .highlights {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding-left: var(--space-4);
+  }
+
+  .highlights li::marker {
+    color: var(--color-accent);
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stack li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0 var(--space-2);
+    color: var(--color-text-muted);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+</style>

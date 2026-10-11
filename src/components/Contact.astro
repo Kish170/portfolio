@@ -1,0 +1,82 @@
+---
+import { site } from '../data/site';
+
+const { education: edu } = site;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container grid">
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="label">Contact</h2>
+      <p class="lead">Open to data, ML, and software engineering internships.</p>
+      <ul class="links">
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li><a href={site.links.linkedin}>LinkedIn</a></li>
+        <li><a href={site.links.github}>GitHub</a></li>
+      </ul>
+    </section>
+
+    <section id="education" aria-labelledby="education-title">
+      <h2 id="education-title" class="label">Education</h2>
+      <p class="school">{edu.school}</p>
+      <p>{edu.degree}</p>
+      <p class="meta mono">GPA {edu.gpa} · Expected {edu.expected}</p>
+    </section>
+  </div>
+  <p class="container copyright mono">© {year} {site.name}</p>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--space-16);
+    padding-block: var(--space-12) var(--space-8);
+    border-top: var(--border-width) solid var(--color-border);
+    background: var(--color-surface);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 48rem) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  section {
+    display: grid;
+    align-content: start;
+    gap: var(--space-3);
+  }
+
+  .lead,
+  .school {
+    font-size: var(--text-lg);
+    font-weight: 500;
+  }
+
+  .links {
+    display: grid;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .links a {
+    overflow-wrap: anywhere;
+  }
+
+  .meta,
+  .copyright {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .copyright {
+    margin-top: var(--space-12);
+  }
+</style>

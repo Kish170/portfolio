@@ -1,0 +1,57 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import Hero from '../components/Hero.astro';
+import ExperienceList from '../components/ExperienceList.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import { buildMonth, currentRole, groupByCompany } from '../lib/experience';
+import { site } from '../data/site';
+
+const experience = (await getCollection('experience')).map((e) => e.data);
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const skills = (await getCollection('skills')).map((s) => s.data).sort((a, b) => a.order - b.order);
+
+const work = experience.filter((e) => e.kind !== 'leadership');
+const leadership = experience.filter((e) => e.kind === 'leadership');
+const current = currentRole(experience, buildMonth());
+
+// Structured data for search engines; mirrors what the page shows.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: new URL('/', Astro.site).href,
+  description: site.headline,
+  ...(current && {
+    jobTitle: current.role,
+    worksFor: { '@type': 'Organization', name: current.company, ...(current.url && { url: current.url }) },
+  }),
+  affiliation: { '@type': 'CollegeOrUniversity', name: site.education.school },
+  sameAs: [site.links.github, site.links.linkedin],
+  knowsAbout: ['Data engineering', 'Machine learning', 'PySpark', 'Databricks', 'TypeScript', 'Python'],
+};
+
+const sections = [
+  { id: 'experience', label: 'Experience' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+];
+---
+
+<BaseLayout
+  title={`${site.name} | Data and AI engineering`}
+  description={`${site.name} builds data platforms and AI systems. ${current ? `${current.role} at ${current.company}. ` : ''}Co-founder of nAIber.`}
+  {jsonLd}
+>
+  <SiteHeader slot="header" {sections} />
+  <Hero {current} />
+  <ExperienceList id="experience" title="Experience" groups={groupByCompany(work)} />
+  <Projects {projects} />
+  <ExperienceList id="leadership" title="Leadership" groups={groupByCompany(leadership)} />
+  <Skills groups={skills} />
+  <Contact slot="footer" />
+</BaseLayout>

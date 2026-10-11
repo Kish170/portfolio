@@ -1,0 +1,65 @@
+---
+import type { SkillGroup } from '../content/schemas';
+
+interface Props {
+  groups: SkillGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<section id="skills" class="container section" aria-labelledby="skills-title">
+  <h2 id="skills-title" class="label">Skills</h2>
+  <dl class="grid">
+    {
+      groups.map((g) => (
+        <div class="group" data-skill-group={g.group}>
+          <dt class="mono">{g.group}</dt>
+          <dd>{g.items.join(', ')}</dd>
+        </div>
+      ))
+    }
+  </dl>
+</section>
+
+<style>
+  .section {
+    display: grid;
+    gap: var(--space-8);
+    padding-block: var(--space-12);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--border-width);
+    margin: 0;
+    background: var(--color-border);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  @media (min-width: 48rem) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .group {
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-6);
+    background: var(--color-surface);
+  }
+
+  dt {
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-mono);
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  dd {
+    margin: 0;
+  }
+</style>
