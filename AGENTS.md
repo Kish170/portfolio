@@ -18,6 +18,8 @@ Static Astro + TypeScript (strict) site, deployed to Firebase Hosting
 - `npm run check` - type check (`astro check`)
 - `npm test` - Vitest (content schemas) then Playwright e2e against the
   production build, desktop + mobile, incl. axe WCAG AA in light and dark
+- `npm run sync:resume` - copy the SWE resume PDF from `../resume` into
+  `public/resume.pdf` (committed). A unit test fails when they drift.
 - `/styleguide` - noindex review page for tokens and all content entries
 - `firebase hosting:channel:deploy preview` - preview deploy
 - `firebase deploy --only hosting` - production deploy (only when asked)
