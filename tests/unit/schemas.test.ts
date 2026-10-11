@@ -82,6 +82,11 @@ describe('projectSchema', () => {
     expect(projectSchema.safeParse({ ...project, diagram: bad }).success).toBe(false);
   });
 
+  it('rejects node labels too long to fit a diagram box', () => {
+    const long = { ...diagram, nodes: [{ ...diagram.nodes[0]!, label: 'A label far too long' }, diagram.nodes[1]!] };
+    expect(projectSchema.safeParse({ ...project, diagram: long }).success).toBe(false);
+  });
+
   it('rejects non-URL links', () => {
     expect(projectSchema.safeParse({ ...project, links: { repo: 'not a url' } }).success).toBe(false);
   });

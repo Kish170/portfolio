@@ -2,7 +2,8 @@
 import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
-  sections: { id: string; label: string }[];
+  /** href defaults to an in-page anchor; other pages point back at the home page. */
+  sections: { id: string; label: string; href?: string }[];
 }
 
 const { sections } = Astro.props;
@@ -16,7 +17,7 @@ const { sections } = Astro.props;
         {
           sections.map((s) => (
             <li>
-              <a href={`#${s.id}`}>{s.label}</a>
+              <a href={s.href ?? `#${s.id}`}>{s.label}</a>
             </li>
           ))
         }
@@ -76,9 +77,23 @@ const { sections } = Astro.props;
     color: var(--color-text);
   }
 
+  /* Phones: four section links + toggle only fit without the home mark.
+     Section links already lead home, and detail pages link back to projects. */
   @media (max-width: 30rem) {
+    .mark {
+      display: none;
+    }
+
+    nav {
+      margin-left: 0;
+    }
+
     ul {
       gap: var(--space-3);
+    }
+
+    .inner {
+      justify-content: space-between;
     }
   }
 </style>

@@ -25,4 +25,4 @@ diagram:
     - { from: engine, to: memory, label: context }
 ---
 
-nAIber is a startup I co-founded. This page covers the architecture at a high level; the product has its own site.
+nAIber is a startup I co-founded. This page covers the architecture at a high level.

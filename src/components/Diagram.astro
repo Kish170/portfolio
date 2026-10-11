@@ -1,0 +1,237 @@
+---
+import type { Project } from '../content/schemas';
+import { layoutDiagram, NODE_H, NODE_W, type Orientation } from '../lib/diagram';
+
+interface Props {
+  diagram: NonNullable<Project['diagram']>;
+  /** Unique per page; scopes the SVG marker ids. */
+  id: string;
+  title: string;
+}
+
+const { diagram, id, title } = Astro.props;
+const orientations: Orientation[] = ['horizontal', 'vertical'];
+const layouts = orientations.map((o) => ({ orientation: o, ...layoutDiagram(diagram, o) }));
+---
+
+<figure class="diagram" data-diagram>
+  {
+    layouts.map((l) => (
+      <svg
+        class={l.orientation}
+        data-orientation={l.orientation}
+        viewBox={`0 0 ${l.width} ${l.height}`}
+        width={l.width}
+        height={l.height}
+        role="group"
+        aria-label={`${title} architecture`}
+      >
+        <defs>
+          <marker
+            id={`${id}-${l.orientation}-arrow`}
+            viewBox="0 0 8 8"
+            refX="7"
+            refY="4"
+            markerWidth="7"
+            markerHeight="7"
+            orient="auto-start-reverse"
+          >
+            <path d="M 0 0 L 8 4 L 0 8 z" class="arrow" />
+          </marker>
+        </defs>
+        {l.edges.map((e) => (
+          <g class="edge" data-edge={e.id} data-from={e.from} data-to={e.to} aria-hidden="true">
+            <path d={e.path} marker-end={`url(#${id}-${l.orientation}-arrow)`} />
+            {e.label && (
+              <text x={e.labelAt.x} y={e.labelAt.y - 6} text-anchor="middle">
+                {e.label}
+              </text>
+            )}
+          </g>
+        ))}
+        {l.nodes.map((n) => (
+          <g
+            class="node"
+            data-node={n.id}
+            data-label={n.label}
+            data-role={n.role}
+            tabindex="0"
+            role="img"
+            aria-label={`${n.label}: ${n.role}`}
+          >
+            <rect x={n.x} y={n.y} width={NODE_W} height={NODE_H} rx="4" />
+            <text x={n.x + NODE_W / 2} y={n.y + NODE_H / 2} text-anchor="middle" dominant-baseline="central">
+              {n.label}
+            </text>
+          </g>
+        ))}
+      </svg>
+    ))
+  }
+  <figcaption data-caption aria-live="polite" hidden>
+    <span class="hint">Select a component to see what it does.</span>
+  </figcaption>
+</figure>
+
+<style>
+  .diagram {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  svg.horizontal {
+    display: none;
+  }
+
+  @media (min-width: 48rem) {
+    svg.horizontal {
+      display: block;
+    }
+
+    svg.vertical {
+      display: none;
+    }
+  }
+
+  /* Vertical diagrams are narrow; cap their width so text keeps its size. */
+  svg.vertical {
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .node rect {
+    fill: var(--color-surface);
+    stroke: var(--color-border);
+    stroke-width: 1.5;
+    transition:
+      stroke var(--duration-fast) var(--ease),
+      fill var(--duration-fast) var(--ease);
+  }
+
+  .node text {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    fill: var(--color-text);
+    pointer-events: none;
+  }
+
+  .node {
+    cursor: default;
+    outline: none;
+    transition: opacity var(--duration-base) var(--ease);
+  }
+
+  .node:focus-visible rect,
+  .node[data-active] rect {
+    stroke: var(--color-accent);
+    fill: var(--color-accent-soft);
+  }
+
+  .node:focus-visible rect {
+    stroke-width: 2.5;
+  }
+
+  .edge path {
+    fill: none;
+    stroke: var(--color-text-muted);
+    stroke-width: 1.25;
+    opacity: 0.6;
+    transition:
+      stroke var(--duration-fast) var(--ease),
+      opacity var(--duration-fast) var(--ease);
+  }
+
+  .edge text {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    fill: var(--color-text-muted);
+  }
+
+  .arrow {
+    fill: var(--color-text-muted);
+  }
+
+  .edge[data-active] path {
+    stroke: var(--color-accent);
+    opacity: 1;
+    stroke-width: 2;
+  }
+
+  /* While a node is active, recede everything not connected to it. */
+  svg[data-focused] .node:not([data-active]),
+  svg[data-focused] .edge:not([data-active]) {
+    opacity: 0.35;
+  }
+
+  figcaption {
+    min-height: 3em;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  figcaption :global(strong) {
+    color: var(--color-text);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  function setActive(svg: SVGSVGElement, nodeId: string | null) {
+    svg.toggleAttribute('data-focused', nodeId !== null);
+    svg.querySelectorAll<SVGGElement>('[data-node]').forEach((n) => {
+      n.toggleAttribute('data-active', n.dataset.node === nodeId);
+    });
+    svg.querySelectorAll<SVGGElement>('[data-edge]').forEach((e) => {
+      const connected = nodeId !== null && (e.dataset.from === nodeId || e.dataset.to === nodeId);
+      e.toggleAttribute('data-active', connected);
+      // Also light up the neighbours so the path reads as a whole.
+      if (connected) {
+        const other = e.dataset.from === nodeId ? e.dataset.to : e.dataset.from;
+        svg.querySelector(`[data-node="${other}"]`)?.toggleAttribute('data-active', true);
+      }
+    });
+  }
+
+  function describe(caption: HTMLElement, node: SVGGElement | null) {
+    if (!node) {
+      caption.innerHTML = '<span class="hint">Select a component to see what it does.</span>';
+      return;
+    }
+    caption.replaceChildren();
+    const label = document.createElement('strong');
+    label.textContent = node.dataset.label ?? '';
+    caption.append(label, document.createTextNode(` ${node.dataset.role ?? ''}`));
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-diagram]').forEach((figure) => {
+    const caption = figure.querySelector<HTMLElement>('[data-caption]')!;
+    caption.hidden = false; // Only meaningful once interaction works.
+
+    figure.querySelectorAll<SVGSVGElement>('svg').forEach((svg) => {
+      svg.querySelectorAll<SVGGElement>('[data-node]').forEach((node) => {
+        const on = () => {
+          setActive(svg, node.dataset.node ?? null);
+          describe(caption, node);
+        };
+        const off = () => {
+          setActive(svg, null);
+          describe(caption, null);
+        };
+        node.addEventListener('pointerenter', on);
+        node.addEventListener('focus', on);
+        node.addEventListener('pointerleave', () => {
+          if (document.activeElement !== node) off();
+        });
+        node.addEventListener('blur', off);
+      });
+    });
+  });
+</script>

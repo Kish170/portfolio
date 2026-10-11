@@ -1,0 +1,163 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Diagram from './Diagram.astro';
+import StatusBadge from './StatusBadge.astro';
+
+interface Props {
+  projects: CollectionEntry<'projects'>[];
+}
+
+const { projects } = Astro.props;
+const featured = projects.filter((p) => p.data.status !== 'foundations');
+const foundations = projects.filter((p) => p.data.status === 'foundations');
+---
+
+<section id="projects" class="container section" aria-labelledby="projects-title">
+  <h2 id="projects-title" class="label">Projects</h2>
+
+  <div class="featured">
+    {
+      featured.map(({ id, data }) => (
+        <article class="card" data-project={id}>
+          <header class="card-head">
+            <div class="title-row">
+              <h3>
+                <a href={`/projects/${id}/`}>{data.title}</a>
+              </h3>
+              <StatusBadge status={data.status} />
+            </div>
+            <p class="tagline">{data.tagline}</p>
+          </header>
+          {data.diagram && <Diagram diagram={data.diagram} id={`card-${id}`} title={data.title} />}
+          <footer class="card-foot">
+            <ul class="stack" aria-label="Tech used">
+              {data.stack.map((t) => (
+                <li>{t}</li>
+              ))}
+            </ul>
+            <a class="more mono" href={`/projects/${id}/`} aria-label={`View ${data.title} project`}>
+              View project
+            </a>
+          </footer>
+        </article>
+      ))
+    }
+  </div>
+
+  {
+    foundations.length > 0 && (
+      <div class="foundations">
+        <h3 class="label">Foundations</h3>
+        <ul>
+          {foundations.map(({ id, data }) => (
+            <li data-project={id}>
+              {data.links.repo ? <a href={data.links.repo}>{data.title}</a> : <span>{data.title}</span>}
+              <span class="muted"> {data.tagline}</span>
+              <span class="mono muted small"> {data.stack.join(', ')}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</section>
+
+<style>
+  .section {
+    display: grid;
+    gap: var(--space-8);
+    padding-block: var(--space-12);
+  }
+
+  .featured {
+    display: grid;
+    gap: var(--space-8);
+  }
+
+  .card {
+    display: grid;
+    gap: var(--space-6);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .card-head {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .card h3 {
+    font-size: var(--text-xl);
+  }
+
+  h3 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  h3 a:hover {
+    text-decoration: underline;
+  }
+
+  .tagline {
+    color: var(--color-text-muted);
+  }
+
+  .card-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .stack li {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0 var(--space-2);
+    color: var(--color-text-muted);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .more {
+    font-size: var(--text-sm);
+  }
+
+  .foundations {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .foundations ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .muted {
+    color: var(--color-text-muted);
+  }
+
+  .small {
+    font-size: var(--text-xs);
+  }
+</style>

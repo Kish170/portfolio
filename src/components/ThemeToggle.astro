@@ -1,5 +1,5 @@
 <button type="button" class="theme-toggle" data-theme-toggle>
-  <span class="mono" data-theme-label>theme</span>
+  <span class="mono"><span data-theme-label>theme</span><span class="suffix"> mode</span></span>
 </button>
 
 <style>
@@ -14,6 +14,13 @@
     white-space: nowrap;
     cursor: pointer;
     transition: color var(--duration-fast) var(--ease), border-color var(--duration-fast) var(--ease);
+  }
+
+  /* Narrow headers drop " mode"; the accessible name keeps the full phrase. */
+  @media (max-width: 30rem) {
+    .suffix {
+      display: none;
+    }
   }
 
   .theme-toggle:hover {
@@ -33,7 +40,7 @@
   function render() {
     const next = currentTheme() === 'dark' ? 'light' : 'dark';
     document.querySelectorAll<HTMLElement>('[data-theme-label]').forEach((el) => {
-      el.textContent = `${next} mode`;
+      el.textContent = next;
       // Accessible name must contain the visible text (WCAG 2.5.3).
       el.closest('button')?.setAttribute('aria-label', `Switch to ${next} mode`);
     });

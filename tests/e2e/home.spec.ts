@@ -111,7 +111,7 @@ test.describe('contact and education', () => {
 
 test('every nav link targets a section that exists', async ({ page }) => {
   await page.goto('/');
-  const hrefs = await page.locator('header nav a[href^="#"]').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
+  const hrefs = await page.getByRole('banner').locator('nav a[href^="#"]').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
   expect(hrefs.length).toBeGreaterThanOrEqual(3);
   for (const href of hrefs) {
     await expect(page.locator(href!)).toHaveCount(1);
@@ -141,12 +141,31 @@ test('header controls stay on one line at 375px', async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
   const page = await context.newPage();
   await page.goto('/');
-  const toggle = page.locator('header [data-theme-toggle]');
+  const toggle = page.getByRole('banner').locator('[data-theme-toggle]');
   const lineHeight = await toggle.evaluate((el) => parseFloat(getComputedStyle(el).lineHeight));
   const box = await toggle.boundingBox();
   // One line of text plus vertical padding and borders; a wrap would roughly double it.
   expect(box!.height).toBeLessThan(lineHeight * 1.9);
-  const header = await page.locator('header').boundingBox();
+  const header = await page.getByRole('banner').boundingBox();
   expect(header!.width).toBeLessThanOrEqual(375);
   await context.close();
+});
+
+test('nav jumps land with the section title visible below the sticky header', async ({ page }) => {
+  await page.goto('/');
+  const header = page.getByRole('banner');
+  for (const id of ['experience', 'projects', 'skills']) {
+    await header.locator(`nav a[href="#${id}"]`).click();
+    await page.waitForFunction((target) => location.hash === `#${target}`, id);
+    const headerBottom = (await header.boundingBox())!.y + (await header.boundingBox())!.height;
+    const titleTop = (await page.locator(`#${id} h2`).boundingBox())!.y;
+    expect(titleTop, `#${id} title hidden under header`).toBeGreaterThanOrEqual(headerBottom);
+  }
+});
+
+test('foundations label uses the small label style', async ({ page }) => {
+  await page.goto('/');
+  const label = page.locator('#projects .foundations .label').first();
+  const size = await label.evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+  expect(size).toBe(12); // --text-xs
 });

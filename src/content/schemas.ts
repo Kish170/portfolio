@@ -30,7 +30,8 @@ const diagramSchema = z
       .array(
         z.object({
           id: z.string().regex(/^[a-z0-9-]+$/, 'Node ids are kebab-case'),
-          label: z.string().min(1),
+          // Capped so it fits one line of a fixed-width diagram box (NODE_W).
+          label: z.string().min(1).max(18),
           // Shown on hover/focus: what this part does and why it exists.
           role: z.string().min(1),
           // Layout column, left to right, so diagrams read as a flow.
