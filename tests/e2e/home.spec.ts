@@ -162,10 +162,3 @@ test('nav jumps land with the section title visible below the sticky header', as
     expect(titleTop, `#${id} title hidden under header`).toBeGreaterThanOrEqual(headerBottom);
   }
 });
-
-test('foundations label uses the small label style', async ({ page }) => {
-  await page.goto('/');
-  const label = page.locator('#projects .foundations .label').first();
-  const size = await label.evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
-  expect(size).toBe(12); // --text-xs
-});

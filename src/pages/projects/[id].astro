@@ -7,9 +7,8 @@ import Diagram from '../../components/Diagram.astro';
 import StatusBadge from '../../components/StatusBadge.astro';
 import { site } from '../../data/site';
 
-// Foundations items are small by design and link straight to their repo.
 export async function getStaticPaths() {
-  const projects = await getCollection('projects', (p) => p.data.status !== 'foundations');
+  const projects = await getCollection('projects');
   return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
 }
 
@@ -52,14 +51,10 @@ const sections = [
       <p class="lead">{data.problem}</p>
     </section>
 
-    {
-      data.diagram && (
-        <section aria-labelledby="arch-title">
-          <h2 id="arch-title" class="label">Architecture</h2>
-          <Diagram diagram={data.diagram} id={`page-${project.id}`} title={data.title} />
-        </section>
-      )
-    }
+    <section aria-labelledby="arch-title">
+      <h2 id="arch-title" class="label">Architecture</h2>
+      <Diagram diagram={data.diagram} id={`page-${project.id}`} title={data.title} />
+    </section>
 
     {
       data.results.length > 0 && (
@@ -97,21 +92,17 @@ const sections = [
       )
     }
 
-    {
-      data.diagram && (
-        <section data-section="components" aria-labelledby="components-title">
-          <h2 id="components-title" class="label">Components</h2>
-          <dl class="components">
-            {data.diagram.nodes.map((n) => (
-              <div>
-                <dt class="mono">{n.label}</dt>
-                <dd>{n.role}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-      )
-    }
+    <section data-section="components" aria-labelledby="components-title">
+      <h2 id="components-title" class="label">Components</h2>
+      <dl class="components">
+        {data.diagram.nodes.map((n) => (
+          <div>
+            <dt class="mono">{n.label}</dt>
+            <dd>{n.role}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
 
     <section data-section="stack" aria-labelledby="stack-title">
       <h2 id="stack-title" class="label">Stack</h2>

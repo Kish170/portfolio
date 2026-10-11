@@ -20,9 +20,8 @@ const projects: Command[] = (await getCollection('projects'))
     label: data.title,
     keywords: `${data.tagline} ${data.stack.join(' ')}`,
     group: 'Projects',
-    ...(data.status === 'foundations'
-      ? { action: 'external' as const, href: data.links.repo }
-      : { action: 'navigate' as const, href: `/projects/${id}/` }),
+    action: 'navigate',
+    href: `/projects/${id}/`,
   }));
 
 const actions: Command[] = [

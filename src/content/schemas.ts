@@ -67,9 +67,8 @@ export const projectSchema = z
   .object({
     title: z.string().min(1),
     tagline: z.string().min(1).max(120),
-    // shipped: done; building: live work with honest worksToday/planned split;
-    // foundations: older work kept small.
-    status: z.enum(['shipped', 'building', 'foundations']),
+    // shipped: done; building: live work with an honest worksToday/planned split.
+    status: z.enum(['shipped', 'building']),
     order: z.number().int(),
     problem: z.string().min(1),
     results: z.array(z.string().min(1)).default([]),
@@ -82,7 +81,7 @@ export const projectSchema = z
         live: z.url().optional(),
       })
       .default({}),
-    diagram: diagramSchema.optional(),
+    diagram: diagramSchema,
   })
   .superRefine((p, ctx) => {
     // The "Building" badge is only honest if both halves of the split exist.
@@ -91,9 +90,6 @@ export const projectSchema = z
         ctx.addIssue({ code: 'custom', path: ['worksToday'], message: 'building projects must list worksToday' });
       if (p.planned.length === 0)
         ctx.addIssue({ code: 'custom', path: ['planned'], message: 'building projects must list planned' });
-    }
-    if (p.status !== 'foundations' && !p.diagram) {
-      ctx.addIssue({ code: 'custom', path: ['diagram'], message: 'featured projects need a diagram' });
     }
   });
 

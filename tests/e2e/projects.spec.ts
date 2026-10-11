@@ -13,7 +13,7 @@ test.describe('projects section', () => {
     const ids = await page
       .locator('#projects [data-project]')
       .evaluateAll((els) => els.map((e) => e.getAttribute('data-project')));
-    expect(ids).toEqual(['naiber', 'home-lab', 'internship-watcher', 'web-crawler']);
+    expect(ids).toEqual(['naiber', 'home-lab', 'internship-watcher']);
   });
 
   test('shows the Building badge only on building projects', async ({ page }) => {
@@ -31,13 +31,9 @@ test.describe('projects section', () => {
     }
   });
 
-  test('foundations items link to the repo and have no detail page', async ({ page, request }) => {
+  test('the removed crawler has no card or page', async ({ page, request }) => {
     await page.goto('/');
-    const card = page.locator('#projects [data-project="web-crawler"]');
-    await expect(card.getByRole('link', { name: /Spider Search Engine/ })).toHaveAttribute(
-      'href',
-      'https://github.com/Kish170/Spider-Search-Engine',
-    );
+    await expect(page.locator('#projects')).not.toContainText('Spider Search Engine');
     expect((await request.get('/projects/web-crawler/')).status()).toBe(404);
   });
 });

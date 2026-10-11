@@ -97,7 +97,7 @@ const sizes = ['3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'];
                 </ul>
               </>
             )}
-            {data.diagram && <p class="mono">diagram: {data.diagram.nodes.map((n) => n.label).join(' / ')}</p>}
+            <p class="mono">diagram: {data.diagram.nodes.map((n) => n.label).join(' / ')}</p>
           </article>
         ))
       }

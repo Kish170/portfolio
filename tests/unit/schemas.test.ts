@@ -66,10 +66,13 @@ describe('projectSchema', () => {
     expect(projectSchema.safeParse({ ...building, worksToday: ['x'], planned: ['y'] }).success).toBe(true);
   });
 
-  it('requires a diagram for featured projects but not foundations', () => {
+  it('requires a diagram on every project', () => {
     const { diagram: _, ...noDiagram } = project;
     expect(projectSchema.safeParse(noDiagram).success).toBe(false);
-    expect(projectSchema.safeParse({ ...noDiagram, status: 'foundations' }).success).toBe(true);
+  });
+
+  it('rejects the removed foundations status', () => {
+    expect(projectSchema.safeParse({ ...project, status: 'foundations' }).success).toBe(false);
   });
 
   it('rejects edges pointing at unknown nodes', () => {

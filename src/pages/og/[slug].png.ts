@@ -4,7 +4,7 @@ import { site } from '../../data/site';
 import { buildMonth, currentRole } from '../../lib/experience';
 import { renderOgImage, type OgCard } from '../../lib/og';
 
-// One preview per public page: "home" plus each featured project.
+// One preview per public page: "home" plus each project.
 export const getStaticPaths = (async () => {
   const experience = (await getCollection('experience')).map((e) => e.data);
   const current = currentRole(experience, buildMonth());
@@ -13,7 +13,7 @@ export const getStaticPaths = (async () => {
     subtitle: site.headline,
     footer: current ? `${current.role} at ${current.company}` : site.education.school,
   };
-  const projects = (await getCollection('projects', (p) => p.data.status !== 'foundations')).map((p) => ({
+  const projects = (await getCollection('projects')).map((p) => ({
     params: { slug: p.id },
     props: {
       card: {

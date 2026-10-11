@@ -2,8 +2,8 @@ import { existsSync } from 'node:fs';
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test, type Page } from './fixtures';
 
-// 5 sections + 4 projects + copy email, GitHub, LinkedIn, toggle theme (+ resume once ticket 09 lands).
-const EXPECTED_COUNT = 13 + (existsSync('public/resume.pdf') ? 1 : 0);
+// 5 sections + 3 projects + copy email, GitHub, LinkedIn, toggle theme (+ resume once ticket 09 lands).
+const EXPECTED_COUNT = 12 + (existsSync('public/resume.pdf') ? 1 : 0);
 
 const palette = (page: Page) => page.getByRole('dialog', { name: 'Command palette' });
 const input = (page: Page) => palette(page).getByRole('combobox');

@@ -52,7 +52,7 @@ test('all content entries load through the collections', async ({ page }) => {
   for (const id of ['clio', 'naiber', 'thescore-ds', 'thescore-swe', 'blueprint']) {
     await expect(page.locator(`[data-entry="experience/${id}"]`)).toHaveCount(1);
   }
-  for (const id of ['naiber', 'home-lab', 'internship-watcher', 'web-crawler']) {
+  for (const id of ['naiber', 'home-lab', 'internship-watcher']) {
     await expect(page.locator(`[data-entry="projects/${id}"]`)).toHaveCount(1);
   }
 });
