@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # firebase
 .firebase/
+
+# test output
+test-results/
+playwright-report/
